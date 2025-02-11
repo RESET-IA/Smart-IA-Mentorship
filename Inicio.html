@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESET® - Educación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .header {
+            width: 100%;
+            height: 100px;
+            background: #000000; /* Color de cabecera más suave */
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url('IMAGENES/sphere-with-orange-yellow-lines-dots-that-are-connected-center.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+        }
+
+        /* Menú lateral */
+        .sidebar {
+            width: 280px;
+            background: #8b00002f;
+            color: rgb(216, 194, 194);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 180px;
+        }
+
+        .separator {
+            border-bottom: 5px solid white;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 3px solid #140101; /* Línea separadora */
+        }
+
+        .menu li i {
+            margin-right: 10px;
+        }
+
+        .menu li:hover, 
+        .menu li.active {
+            background: #ff3c00;
+            color: white;
+        }
+
+        /* Contenedor principal */
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Secciones activas */
+        .section {
+            display: none;
+            width: 60%;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            color: white;
+        }
+
+        /* Contenedor de botones centrado */
+        .cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .cards .card {
+            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
+            box-shadow: none !important;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+       }
+
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            width: 220px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card:hover {
+            background: rgba(255, 60, 0, 0.8);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        
+        <div class="header">
+        <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
+        <div class="title"></div> <!-- Título centrado -->
+        <button class="widget-button" onclick="abrirVentana()">
+            <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
+        </button>
+    </div>
+        
+        <style>
+            .widget-button {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                padding: 5px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+        
+            .widget-button:hover {
+                transform: scale(1.1);
+            }
+        
+            .widget-icon {
+                width: 120x; /* Ajusta el tamaño del icono */
+                height: 120px;
+            }
+        </style>
+        
+        <script>
+            function abrirVentana() {
+                var width = 500;
+                var height = 500;
+        
+                var screenWidth = window.screen.width;
+                var screenHeight = window.screen.height;
+        
+                var left = (screenWidth - width) / 2;
+                var top = (screenHeight - height) / 2;
+        
+                window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
+                            'Widget', 
+                            'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
+            }
+        </script>
+
+        <div class="logo-container">
+            <img src="IMAGENES/kepl.png" alt="Logo" class="logo">
+        </div>
+       
+        <p style="text-align: center; font-weight: bold;">Artesanos</p>
+        <div class="separator"></div>
+
+        <div class="menu">
+            <ul>
+                <li onclick="showSection('matematicas')"><i class="fas fa-square-root-alt"></i> Matemáticas</li>
+                <li onclick="showSection('ciencias')"><i class="fas fa-flask"></i> Ciencias</li>
+                <li onclick="showSection('lengua-literatura')"><i class="fas fa-book"></i> Lengua y Literatura</li>
+                <li onclick="showSection('estudios-sociales')"><i class="fas fa-globe"></i> Estudios Sociales</li>
+                <li onclick="showSection('ingles')"><i class="fas fa-language"></i> Inglés</li>
+                <li onclick="showSection('docentes')"><i class="fas fa-chalkboard-teacher"></i> Docentes</li>
+                <li onclick="showSection('administrativos')"><i class="fas fa-briefcase"></i> Administrativos</li>
+                <li onclick="showSection('secretaria')"><i class="fas fa-user-tie"></i> Secretaría</li>
+                <li onclick="showSection('orientacion')"><i class="fas fa-users"></i> Orientación Estudiantil</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="main">
+        <div id="matematicas" class="section">
+            <h2>📘 Matemáticas</h2>
+            <div class="cards">
+                <div class="card">Ejercicios de Cálculo</div>
+                <div class="card">Álgebra Interactiva</div>
+                <div class="card">Geometría Práctica</div>
+            </div>
+        </div>
+
+        <div id="ciencias" class="section">
+            <h2>🧪 Ciencias</h2>
+            <div class="cards">
+                <div class="card">Experimentos Virtuales</div>
+                <div class="card">Laboratorio 3D</div>
+                <div class="card">Biología en Acción</div>
+            </div>
+        </div>
+
+        <div id="estudios-sociales" class="section">
+            <h2>🌎 Estudios Sociales</h2>
+            <div class="cards">
+                <div class="card">Historia del Mundo</div>
+                <div class="card">Geopolítica</div>
+                <div class="card">Economía Básica</div>
+            </div>
+        </div>
+
+        <div id="ingles" class="section">
+            <h2>🚀 Ingles </h2>
+            <div class="cards">
+                <div class="video-container">
+                <video width="600" controls>
+                    <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div id="docentes" class="section">
+            <h2>👩‍🏫 Docentes</h2>
+            <div class="cards">
+                <div class="card">Capacitación Online</div>
+                <div class="card">Plataformas de Evaluación</div>
+                <div class="card">Recursos Didácticos</div>
+            </div>
+        </div>
+
+        <div id="administrativos" class="section">
+            <h2>💼 Administrativos</h2>
+            <div class="cards">
+                <div class="card">Gestión Académica</div>
+                <div class="card">Procesos Administrativos</div>
+                <div class="card">Soporte y Reportes</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Oculta todas las secciones
+            document.querySelectorAll('.section').forEach(section => section.style.display = "none");
+
+            // Muestra solo la sección seleccionada
+            document.getElementById(sectionId).style.display = "block";
+
+            // Actualiza el estado activo en el menú
+            document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
+            event.target.closest("li").classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
