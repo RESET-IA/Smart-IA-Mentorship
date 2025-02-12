@@ -6,12 +6,25 @@
     <title>RESET® - Educación</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
-     <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
+        }
+        
+        .header {
+            width: 100%;
+            height: 100px;
+            background: #00000018; /* Color de cabecera más suave */
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
         }
 
         body {
@@ -22,98 +35,72 @@
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* CABECERA */
-        .header {
-            width: 100%;
-            background: #00000018;
+        /* Menú lateral */
+        .sidebar {
+            width: 280px;
+            background: #8b00002f;
+            color: rgb(216, 194, 194);
+            padding: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            flex-wrap: wrap;
+            flex-direction: column;
         }
 
         .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .logo {
-            max-width: 120px;
-            height: auto;
+            width: 180px;
         }
 
-        .widget-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .widget-button:hover {
-            transform: scale(1.1);
-        }
-
-        .widget-icon {
-            width: 50px;
-            height: 50px;
-        }
-
-        /* MENÚ */
-        .sidebar {
+        .separator {
+            border-bottom: 5px solid white;
+            margin: 10px 0;
             width: 100%;
-            background: #8b00002f;
-            color: rgb(216, 194, 194);
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
         }
 
         .menu ul {
             list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             padding: 0;
-            gap: 10px;
         }
 
         .menu li {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            font-size: 14px;
+            padding: 12px;
+            font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
-            border-bottom: 3px solid #140101;
+            border-bottom: 3px solid #140101; /* Línea separadora */
         }
 
-        .menu li:hover, .menu li.active {
+        .menu li i {
+            margin-right: 10px;
+        }
+
+        .menu li:hover, 
+        .menu li.active {
             background: #ff3c00;
             color: white;
         }
 
-        /* CONTENIDO PRINCIPAL */
+        /* Contenedor principal */
         .main {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            flex-direction: column;
         }
 
-        /* SECCIONES */
+        /* Secciones activas */
         .section {
             display: none;
-            width: 90%;
-            max-width: 800px;
+            width: 60%;
             text-align: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
@@ -122,21 +109,29 @@
         }
 
         .section img {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
+         width: 200px; /* Ajusta el tamaño según necesites */
+         height: auto; /* Mantiene la proporción */
         }
 
-        /* BOTONES */
+
+        /* Contenedor de botones centrado */
         .cards {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
             width: 100%;
-            flex-wrap: wrap;
             margin-top: 20px;
+            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+
         }
+        .cards .card {
+            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
+            box-shadow: none !important;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+       }
+
 
         .card {
             background: rgba(255, 255, 255, 0.1);
@@ -156,49 +151,23 @@
         }
 
         .card i {
-            font-size: 28px;
-            margin-bottom: 10px;
+         font-size: 28px; /* Ajusta el tamaño del icono */
+         margin-right: 10px; /* Espacio entre icono y texto */
         }
+
 
         .card:hover {
             background: rgba(255, 60, 0, 0.8);
             color: white;
             transform: scale(1.05);
         }
-
-        /* RESPONSIVIDAD */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                height: auto;
-                align-items: center;
-                padding: 10px 5px;
-            }
-
-            .logo-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .menu ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .menu li {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .cards {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
     </style>
 </head>
 <body>
+
+    <!-- Menú lateral -->
     <div class="sidebar">
+        
         <div class="header">
         <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
         <div class="title"></div> <!-- Título centrado -->
@@ -206,6 +175,7 @@
             <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
         </button>
     </div>
+        
         <style>
             .widget-button {
                 position: absolute;
@@ -217,13 +187,16 @@
                 cursor: pointer;
                 transition: transform 0.2s ease;
             }
+        
             .widget-button:hover {
                 transform: scale(1.1);
             }
+        
             .widget-icon {
                 width: 120x; /* Ajusta el tamaño del icono */
                 height: 120px;
             }
+
             .upload-label {
              background-color: #ff3c00;
              color: white;
@@ -235,73 +208,33 @@
              text-align: center;
              margin-top: 10px;
            }
+
             .upload-label:hover {
              background-color: #e63300;
             }
+
             #fileUploadSAC {
              display: none;
             }
-             /* 📱 RESPONSIVIDAD */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .sidebar {
-                width: 100%;
-                padding: 10px;
-                position: relative;
-                text-align: center;
-            }
-
-            .menu ul {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-
-            .menu li {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .main {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .cards {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .card {
-                width: 90%;
-                max-width: 300px;
-                height: auto;
-                padding: 20px;
-            }
-
-            .upload-label {
-                font-size: 16px;
-                padding: 10px 15px;
-            }
-        }
         </style>
+        
         <script>
             function abrirVentana() {
                 var width = 500;
                 var height = 500;
+        
                 var screenWidth = window.screen.width;
                 var screenHeight = window.screen.height;
+        
                 var left = (screenWidth - width) / 2;
                 var top = (screenHeight - height) / 2;
+        
                 window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
                             'Widget', 
                             'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
             }
         </script>
+
         <div class="logo-container">
             <img src="IMAGENES/kepl.png" alt="Logo" class="logo">
         </div>
