@@ -6,22 +6,14 @@
     <title>RESET® - Educación</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
-    <style>
+     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-          .header {
-        width: 100%;
-        background: #00000018; /* Fondo translúcido */
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* Distribuir logos y botón */
-        padding: 10px 20px;
-        flex-wrap: wrap; /* Evita amontonamiento */
-        }
+
         body {
             width: 100%;
             height: 100vh;
@@ -30,7 +22,48 @@
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
+            flex-direction: column;
         }
+
+        /* CABECERA */
+        .header {
+            width: 100%;
+            background: #00000018;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            max-width: 140px;
+            height: auto;
+        }
+
+        .widget-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .widget-button:hover {
+            transform: scale(1.1);
+        }
+
+        .widget-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* MENÚ LATERAL */
         .sidebar {
             width: 280px;
             background: #8b00002f;
@@ -39,23 +72,12 @@
             display: flex;
             flex-direction: column;
         }
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-         .logo {
-            max-width: 140px; /* Reduce tamaño del logo en móviles */
-        }
 
-        .separator {
-            border-bottom: 5px solid white;
-            margin: 10px 0;
-            width: 100%;
-        }
         .menu ul {
             list-style: none;
             padding: 0;
         }
+
         .menu li {
             display: flex;
             align-items: center;
@@ -64,51 +86,53 @@
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
-            border-bottom: 3px solid #140101; /* Línea separadora */
+            border-bottom: 3px solid #140101;
         }
-        .menu li i {
-            margin-right: 10px;
-        }
-        .menu li:hover, 
-        .menu li.active {
+
+        .menu li:hover, .menu li.active {
             background: #ff3c00;
             color: white;
         }
+
+        /* CONTENEDOR PRINCIPAL */
         .main {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            flex-direction: column;
         }
+
+        /* SECCIONES */
         .section {
             display: none;
-            width: 60%;
+            width: 90%;
+            max-width: 800px;
             text-align: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             color: white;
         }
+
         .section img {
-         width: 200px; /* Ajusta el tamaño según necesites */
-         height: auto; /* Mantiene la proporción */
+            width: 100%;
+            max-width: 250px;
+            height: auto;
         }
+
+        /* BOTONES */
         .cards {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
             width: 100%;
+            flex-wrap: wrap;
             margin-top: 20px;
-            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
         }
-        .cards .card {
-            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-            box-shadow: none !important;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-       }
+
         .card {
             background: rgba(255, 255, 255, 0.1);
             width: 220px;
@@ -125,14 +149,65 @@
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
         .card i {
-         font-size: 28px; /* Ajusta el tamaño del icono */
-         margin-right: 10px; /* Espacio entre icono y texto */
+            font-size: 28px;
+            margin-bottom: 10px;
         }
+
         .card:hover {
             background: rgba(255, 60, 0, 0.8);
             color: white;
             transform: scale(1.05);
+        }
+
+        /* RESPONSIVIDAD */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+                padding: 10px 5px;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .menu ul {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .menu li {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .main {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .cards {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 300px;
+                height: auto;
+                padding: 20px;
+            }
         }
     </style>
 </head>
