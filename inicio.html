@@ -17,7 +17,7 @@
         .header {
             width: 100%;
             height: 100px;
-            background: #000000; /* Color de cabecera más suave */
+            background: #00000018; /* Color de cabecera más suave */
             text-align: center;
             padding: 20px;
             font-size: 24px;
@@ -108,6 +108,12 @@
             color: white;
         }
 
+        .section img {
+         width: 200px; /* Ajusta el tamaño según necesites */
+         height: auto; /* Mantiene la proporción */
+        }
+
+
         /* Contenedor de botones centrado */
         .cards {
             display: flex;
@@ -116,6 +122,8 @@
             gap: 20px;
             width: 100%;
             margin-top: 20px;
+            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+
         }
         .cards .card {
             background: url('IMAGENES/ButtonReset.png') no-repeat center center;
@@ -141,6 +149,12 @@
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
+        .card i {
+         font-size: 28px; /* Ajusta el tamaño del icono */
+         margin-right: 10px; /* Espacio entre icono y texto */
+        }
+
 
         .card:hover {
             background: rgba(255, 60, 0, 0.8);
@@ -181,6 +195,26 @@
             .widget-icon {
                 width: 120x; /* Ajusta el tamaño del icono */
                 height: 120px;
+            }
+
+            .upload-label {
+             background-color: #ff3c00;
+             color: white;
+             padding: 8px 12px;
+             border-radius: 5px;
+             cursor: pointer;
+             font-size: 14px;
+             display: inline-block;
+             text-align: center;
+             margin-top: 10px;
+           }
+
+            .upload-label:hover {
+             background-color: #e63300;
+            }
+
+            #fileUploadSAC {
+             display: none;
             }
         </style>
         
@@ -226,33 +260,47 @@
     <!-- Contenedor principal -->
     <div class="main">
         <div id="matematicas" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>📘 Matemáticas</h2>
             <div class="cards">
-                <div class="card">Ejercicios de Cálculo</div>
-                <div class="card">Álgebra Interactiva</div>
-                <div class="card">Geometría Práctica</div>
+                <div class="card"><i class="fas fa-calculator"></i> Ejercicios de Cálculo</div>
+                <div class="card"><i class="fas fa-square-root-alt"></i> Álgebra Interactiva</div>
+                <div class="card"><i class="fas fa-ruler-combined"></i> Geometría Práctica</div>
             </div>
         </div>
 
         <div id="ciencias" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🧪 Ciencias</h2>
             <div class="cards">
-                <div class="card">Experimentos Virtuales</div>
-                <div class="card">Laboratorio 3D</div>
-                <div class="card">Biología en Acción</div>
-            </div>
+                <div class="card"><i class="fas fa-vial fa-2x"></i> Experimentos Virtuales</div>
+                <div class="card"><i class="fas fa-desktop fa-2x"></i> Laboratorio 3D</div>
+                <div class="card"><i class="fas fa-microscope fa-2x"></i> Biología en Acción</div>
+            </div>            
         </div>
 
+        <div id="lengua-literatura" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>📖 Lenguaje y Literatura</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-feather-alt"></i> Escritura Creativa</div>
+                <div class="card"><i class="fas fa-book-reader"></i> Comprensión Lectora</div>
+                <div class="card"><i class="fas fa-pen-nib"></i> Análisis de Textos</div>
+            </div>
+        </div>        
+
         <div id="estudios-sociales" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🌎 Estudios Sociales</h2>
             <div class="cards">
-                <div class="card">Historia del Mundo</div>
-                <div class="card">Geopolítica</div>
-                <div class="card">Economía Básica</div>
-            </div>
+                <div class="card"><i class="fas fa-landmark fa-2x"></i> Historia del Mundo</div>
+                <div class="card"><i class="fas fa-globe-americas fa-2x"></i> Geopolítica</div>
+                <div class="card"><i class="fas fa-coins fa-2x"></i> Economía Básica</div>
+            </div>            
         </div>
 
         <div id="ingles" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🚀 Ingles </h2>
             <div class="cards">
                 <div class="video-container">
@@ -261,24 +309,54 @@
                 </video>
             </div>
         </div>
+        </div>
 
         <div id="docentes" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>👩‍🏫 Docentes</h2>
             <div class="cards">
-                <div class="card">Capacitación Online</div>
-                <div class="card">Plataformas de Evaluación</div>
-                <div class="card">Recursos Didácticos</div>
-            </div>
+                <div class="card"><i class="fas fa-chalkboard-teacher"></i> Capacitación Online</div>
+                <div class="card"><i class="fas fa-tasks"></i> Plataformas de Evaluación</div>
+                <div class="card"><i class="fas fa-book"></i> Recursos Didácticos</div>
+            </div>            
         </div>
 
         <div id="administrativos" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>💼 Administrativos</h2>
             <div class="cards">
-                <div class="card">Gestión Académica</div>
-                <div class="card">Procesos Administrativos</div>
-                <div class="card">Soporte y Reportes</div>
+                <div class="card"><i class="fas fa-graduation-cap"></i> Gestión Académica</div>
+                <div class="card"><i class="fas fa-cogs"></i> Procesos Administrativos</div>
+                <div class="card"><i class="fas fa-file-alt"></i> Soporte y Reportes</div>
+            </div>            
+        </div>
+
+        <div id="secretaria" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>📑 Secretaría</h2>
+                <div class="cards">
+                    <div class="card">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Gestión de Documentos</span>
+                        <label for="fileUploadSAC" class="upload-label">📂 Cargar Documento</label>
+                        <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .doc, .docx, .pdf">
+                    </div>
+                    <div class="card"><i class="fas fa-user-tie"></i> Atención al Personal</div>
+                    <div class="card"><i class="fas fa-calendar-alt"></i> Administración de Citas</div>
+                </div>
+        </div>      
+
+        <div id="orientacion" class="section">
+            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
+            <h2>🎓 Orientación Educativa</h2>
+            <div class="cards">
+                <div class="card"><i class="fas fa-user-graduate"></i> Asesoría Académica</div>
+                <div class="card"><i class="fas fa-users"></i> Apoyo Psicológico</div>
+                <div class="card"><i class="fas fa-clipboard-list"></i> Planificación de Estudios</div>
             </div>
         </div>
+        
+        
     </div>
 
     <script>
