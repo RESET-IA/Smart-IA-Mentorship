@@ -13,7 +13,6 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
         .header {
             width: 100%;
             height: 100px;
@@ -26,7 +25,6 @@
             display: flex;
             align-items: center;
         }
-
         body {
             width: 100%;
             height: 100vh;
@@ -36,8 +34,6 @@
             background-repeat: no-repeat;
             display: flex;
         }
-
-        /* Menú lateral */
         .sidebar {
             width: 280px;
             background: #8b00002f;
@@ -46,27 +42,22 @@
             display: flex;
             flex-direction: column;
         }
-
         .logo-container {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .logo {
             width: 180px;
         }
-
         .separator {
             border-bottom: 5px solid white;
             margin: 10px 0;
             width: 100%;
         }
-
         .menu ul {
             list-style: none;
             padding: 0;
         }
-
         .menu li {
             display: flex;
             align-items: center;
@@ -77,18 +68,14 @@
             transition: 0.3s;
             border-bottom: 3px solid #140101; /* Línea separadora */
         }
-
         .menu li i {
             margin-right: 10px;
         }
-
         .menu li:hover, 
         .menu li.active {
             background: #ff3c00;
             color: white;
         }
-
-        /* Contenedor principal */
         .main {
             flex: 1;
             display: flex;
@@ -96,8 +83,6 @@
             justify-content: center;
             padding: 20px;
         }
-
-        /* Secciones activas */
         .section {
             display: none;
             width: 60%;
@@ -107,14 +92,10 @@
             border-radius: 10px;
             color: white;
         }
-
         .section img {
          width: 200px; /* Ajusta el tamaño según necesites */
          height: auto; /* Mantiene la proporción */
         }
-
-
-        /* Contenedor de botones centrado */
         .cards {
             display: flex;
             justify-content: center;
@@ -123,7 +104,6 @@
             width: 100%;
             margin-top: 20px;
             flex-wrap: nowrap; /* Evita que se vayan a otra línea */
-
         }
         .cards .card {
             background: url('IMAGENES/ButtonReset.png') no-repeat center center;
@@ -131,8 +111,6 @@
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
        }
-
-
         .card {
             background: rgba(255, 255, 255, 0.1);
             width: 220px;
@@ -149,13 +127,10 @@
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-
         .card i {
          font-size: 28px; /* Ajusta el tamaño del icono */
          margin-right: 10px; /* Espacio entre icono y texto */
         }
-
-
         .card:hover {
             background: rgba(255, 60, 0, 0.8);
             color: white;
@@ -164,10 +139,7 @@
     </style>
 </head>
 <body>
-
-    <!-- Menú lateral -->
     <div class="sidebar">
-        
         <div class="header">
         <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
         <div class="title"></div> <!-- Título centrado -->
@@ -175,7 +147,6 @@
             <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
         </button>
     </div>
-        
         <style>
             .widget-button {
                 position: absolute;
@@ -187,16 +158,13 @@
                 cursor: pointer;
                 transition: transform 0.2s ease;
             }
-        
             .widget-button:hover {
                 transform: scale(1.1);
             }
-        
             .widget-icon {
                 width: 120x; /* Ajusta el tamaño del icono */
                 height: 120px;
             }
-
             .upload-label {
              background-color: #ff3c00;
              color: white;
@@ -208,33 +176,26 @@
              text-align: center;
              margin-top: 10px;
            }
-
             .upload-label:hover {
              background-color: #e63300;
             }
-
             #fileUploadSAC {
              display: none;
             }
         </style>
-        
         <script>
             function abrirVentana() {
                 var width = 500;
                 var height = 500;
-        
                 var screenWidth = window.screen.width;
                 var screenHeight = window.screen.height;
-        
                 var left = (screenWidth - width) / 2;
                 var top = (screenHeight - height) / 2;
-        
                 window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
                             'Widget', 
                             'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
             }
         </script>
-
         <div class="logo-container">
             <img src="IMAGENES/kepl.png" alt="Logo" class="logo">
         </div>
