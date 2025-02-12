@@ -23,6 +23,7 @@
             background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         /* CABECERA */
@@ -43,7 +44,7 @@
         }
 
         .logo {
-            max-width: 140px;
+            max-width: 120px;
             height: auto;
         }
 
@@ -63,26 +64,30 @@
             height: 50px;
         }
 
-        /* MENÚ LATERAL */
+        /* MENÚ */
         .sidebar {
-            width: 280px;
+            width: 100%;
             background: #8b00002f;
             color: rgb(216, 194, 194);
-            padding: 20px;
+            padding: 10px 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
         }
 
         .menu ul {
             list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 0;
+            gap: 10px;
         }
 
         .menu li {
             display: flex;
             align-items: center;
-            padding: 12px;
-            font-size: 16px;
+            padding: 10px 15px;
+            font-size: 14px;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
@@ -94,7 +99,7 @@
             color: white;
         }
 
-        /* CONTENEDOR PRINCIPAL */
+        /* CONTENIDO PRINCIPAL */
         .main {
             flex: 1;
             display: flex;
@@ -175,16 +180,9 @@
                 gap: 10px;
             }
 
-            .sidebar {
-                width: 100%;
-                text-align: center;
-                padding: 10px;
-            }
-
             .menu ul {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
+                flex-direction: column;
+                align-items: center;
             }
 
             .menu li {
@@ -192,21 +190,9 @@
                 padding: 8px;
             }
 
-            .main {
-                width: 100%;
-                padding: 10px;
-            }
-
             .cards {
                 flex-direction: column;
                 gap: 15px;
-            }
-
-            .card {
-                width: 90%;
-                max-width: 300px;
-                height: auto;
-                padding: 20px;
             }
         }
     </style>
