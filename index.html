@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESET®</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,8 +15,10 @@
         }
 
         body {
-            background: url('IMAGENES/kid-with-glowing-lights-their-brain-illustrating-intricate-neural-connections-concept-photography-neuroscience-creativity-conceptual-art-education\ \(2\).jpg') no-repeat center center fixed;
+            background-image: url('IMAGENES/kid-with-glowing-lights-their-brain-illustrating-intricate-neural-connections-concept-photography-neuroscience-creativity-conceptual-art-education\ \(2\).jpg');
             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -29,28 +32,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
+            transform: translateX(-200px); /* Mueve logos y login hacia la izquierda */
         }
 
         .logo {
-            width: 80%;
-            max-width: 300px;
-            margin-bottom: 15px;
+            width: 300px;
+            margin-bottom: 10px;
         }
 
         .login-container {
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            width: 320px;
+            text-align: center;
         }
 
         .login-container h2 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: rgb(222, 239, 255);
         }
 
@@ -64,6 +62,10 @@
             background: rgba(255, 255, 255, 0.9);
             color: rgba(0, 0, 0, 0.925);
             font-size: 16px;
+        }
+
+        .login-container input:focus {
+            border: 2px solid #b1b1b1;
         }
 
         .button {
@@ -81,19 +83,6 @@
 
         .button:hover {
             background-color: rgb(241, 5, 5);
-        }
-
-        /* Media queries para dispositivos móviles */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .container {
-                width: 90%;
-                max-width: 350px;
-            }
         }
     </style>
 </head>
