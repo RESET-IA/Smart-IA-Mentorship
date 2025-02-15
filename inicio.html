@@ -17,7 +17,7 @@
         .header {
             width: 100%;
             height: 100px;
-            background: #00000018; /* Color de cabecera más suave */
+            background: #000000; /* Color de cabecera más suave */
             text-align: center;
             padding: 20px;
             font-size: 24px;
@@ -28,8 +28,8 @@
         }
 
         body {
-            width: 100%;
-            height: 100vh;
+            width: 100vh;
+            height: 110vh;
             background-image: url('IMAGENES/sphere-with-orange-yellow-lines-dots-that-are-connected-center.jpg');
             background-size: cover;
             background-position: center;
@@ -45,6 +45,16 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .sidebar.open {
+            left: -280px;
         }
 
         .logo-container {
@@ -60,6 +70,18 @@
             border-bottom: 5px solid white;
             margin: 10px 0;
             width: 100%;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff3c00;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1001;
         }
 
         .menu ul {
@@ -88,16 +110,15 @@
             color: white;
         }
 
-        /* Contenedor principal */
         .main {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            margin-top: 100px; /* Debe ser igual a la altura del header */
         }
 
-        /* Secciones activas */
         .section {
             display: none;
             width: 60%;
@@ -108,30 +129,15 @@
             color: white;
         }
 
-        .section img {
-         width: 200px; /* Ajusta el tamaño según necesites */
-         height: auto; /* Mantiene la proporción */
-        }
-
-
-        /* Contenedor de botones centrado */
         .cards {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
             width: 100%;
             margin-top: 20px;
-            flex-wrap: nowrap; /* Evita que se vayan a otra línea */
-
         }
-        .cards .card {
-            background: url('IMAGENES/ButtonReset.png') no-repeat center center;
-            box-shadow: none !important;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-       }
-
 
         .card {
             background: rgba(255, 255, 255, 0.1);
@@ -150,30 +156,115 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .card i {
-         font-size: 28px; /* Ajusta el tamaño del icono */
-         margin-right: 10px; /* Espacio entre icono y texto */
-        }
-
-
         .card:hover {
             background: rgba(255, 60, 0, 0.8);
             color: white;
             transform: scale(1.05);
         }
+
+        .main.hidden {
+            display: none;
+        }
+
+        @media (max-width: 1024px) { 
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease-in-out;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main {
+                justify-content: center; /* Centra el contenido */
+                align-items: center;
+                padding: 10px;
+                width: 100%;
+                display: flex;
+                height: auto; /* Deja que crezca con el contenido */
+            }
+
+            .section {
+                display: none;
+                width: 80%;  /* Usa un ancho flexible */
+                max-width: 600px; /* Limita el ancho máximo */
+                text-align: center;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                color: white;
+            }
+
+            body {
+                width: 100vw; /* Evita desbordamientos horizontales */
+                width: 100vw; /* Evita desbordamientos horizontales */
+                overflow-x: hidden;
+                display: flex;
+                justify-content: center;
+            }
+            
+        }
+
+            /* En pantallas grandes (PC), el menú estará visible y fijo */
+            @media (min-width: 1025px) {
+                .sidebar {
+                    width: 280px;
+                    background: #8b00002f;
+                    color: rgb(216, 194, 194);
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    top: 0;
+                    left: 0              
+                }
+
+                .menu-toggle {
+                    display: none;
+                }
+
+            }
+
+            /* Ajuste del header */
+.header1 {
+    width: 100%;
+    height: 100px; /* Ajusta según necesidad */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye los elementos */
+    padding: 10px 20px;
+    position: fixed; /* Fija el header arriba */
+    top: 0;
+    left: 0;
+}
+
+.header1.hidden{
+    display: none;
+}
+
     </style>
 </head>
 <body>
-
+    <div class="header1">  
+        <!-- Botón de ayuda, colocado en el header -->
+        <button class="widget-button" onclick="abrirVentana()">
+            <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon" width="auto">
+        </button>
+    </div>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <!-- Menú lateral -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         
         <div class="header">
         <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
         <div class="title"></div> <!-- Título centrado -->
-        <button class="widget-button" onclick="abrirVentana()">
-            <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon">
-        </button>
     </div>
         
         <style>
@@ -195,26 +286,6 @@
             .widget-icon {
                 width: 120x; /* Ajusta el tamaño del icono */
                 height: 120px;
-            }
-
-            .upload-label {
-             background-color: #ff3c00;
-             color: white;
-             padding: 8px 12px;
-             border-radius: 5px;
-             cursor: pointer;
-             font-size: 14px;
-             display: inline-block;
-             text-align: center;
-             margin-top: 10px;
-           }
-
-            .upload-label:hover {
-             background-color: #e63300;
-            }
-
-            #fileUploadSAC {
-             display: none;
             }
         </style>
         
@@ -260,118 +331,102 @@
     <!-- Contenedor principal -->
     <div class="main">
         <div id="matematicas" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>📘 Matemáticas</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-calculator"></i> Ejercicios de Cálculo</div>
-                <div class="card"><i class="fas fa-square-root-alt"></i> Álgebra Interactiva</div>
-                <div class="card"><i class="fas fa-ruler-combined"></i> Geometría Práctica</div>
+                <div class="card">Ejercicios de Cálculo</div>
+                <div class="card">Álgebra Interactiva</div>
+                <div class="card">Geometría Práctica</div>
             </div>
         </div>
 
         <div id="ciencias" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🧪 Ciencias</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-vial fa-2x"></i> Experimentos Virtuales</div>
-                <div class="card"><i class="fas fa-desktop fa-2x"></i> Laboratorio 3D</div>
-                <div class="card"><i class="fas fa-microscope fa-2x"></i> Biología en Acción</div>
-            </div>            
+                <div class="card">Experimentos Virtuales</div>
+                <div class="card">Laboratorio 3D</div>
+                <div class="card">Biología en Acción</div>
+            </div>
         </div>
 
-        <div id="lengua-literatura" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>📖 Lenguaje y Literatura</h2>
-            <div class="cards">
-                <div class="card"><i class="fas fa-feather-alt"></i> Escritura Creativa</div>
-                <div class="card"><i class="fas fa-book-reader"></i> Comprensión Lectora</div>
-                <div class="card"><i class="fas fa-pen-nib"></i> Análisis de Textos</div>
-            </div>
-        </div>        
-
         <div id="estudios-sociales" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🌎 Estudios Sociales</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-landmark fa-2x"></i> Historia del Mundo</div>
-                <div class="card"><i class="fas fa-globe-americas fa-2x"></i> Geopolítica</div>
-                <div class="card"><i class="fas fa-coins fa-2x"></i> Economía Básica</div>
-            </div>            
+                <div class="card">Historia del Mundo</div>
+                <div class="card">Geopolítica</div>
+                <div class="card">Economía Básica</div>
+            </div>
         </div>
 
         <div id="ingles" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>🚀 Ingles </h2>
             <div class="cards">
                 <div class="video-container">
-                <video width="600" controls>
+                <video width="auto" controls>
                     <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
                 </video>
             </div>
         </div>
-        </div>
 
         <div id="docentes" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>👩‍🏫 Docentes</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-chalkboard-teacher"></i> Capacitación Online</div>
-                <div class="card"><i class="fas fa-tasks"></i> Plataformas de Evaluación</div>
-                <div class="card"><i class="fas fa-book"></i> Recursos Didácticos</div>
-            </div>            
+                <div class="card">Capacitación Online</div>
+                <div class="card">Plataformas de Evaluación</div>
+                <div class="card">Recursos Didácticos</div>
+            </div>
         </div>
 
         <div id="administrativos" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
             <h2>💼 Administrativos</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-graduation-cap"></i> Gestión Académica</div>
-                <div class="card"><i class="fas fa-cogs"></i> Procesos Administrativos</div>
-                <div class="card"><i class="fas fa-file-alt"></i> Soporte y Reportes</div>
-            </div>            
-        </div>
-
-        <div id="secretaria" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>📑 Secretaría</h2>
-                <div class="cards">
-                    <div class="card">
-                        <i class="fas fa-folder-open"></i>
-                        <span>Gestión de Documentos</span>
-                        <label for="fileUploadSAC" class="upload-label">📂 Cargar Documento</label>
-                        <input type="file" id="fileUploadSAC" accept=".xlsx, .xls, .doc, .docx, .pdf">
-                    </div>
-                    <div class="card"><i class="fas fa-user-tie"></i> Atención al Personal</div>
-                    <div class="card"><i class="fas fa-calendar-alt"></i> Administración de Citas</div>
-                </div>
-        </div>      
-
-        <div id="orientacion" class="section">
-            <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Artesanos-_-AI-Agents-ByReset">
-            <h2>🎓 Orientación Educativa</h2>
-            <div class="cards">
-                <div class="card"><i class="fas fa-user-graduate"></i> Asesoría Académica</div>
-                <div class="card"><i class="fas fa-users"></i> Apoyo Psicológico</div>
-                <div class="card"><i class="fas fa-clipboard-list"></i> Planificación de Estudios</div>
+                <div class="card">Gestión Académica</div>
+                <div class="card">Procesos Administrativos</div>
+                <div class="card">Soporte y Reportes</div>
             </div>
         </div>
-        
-        
     </div>
 
     <script>
         function showSection(sectionId) {
             // Oculta todas las secciones
             document.querySelectorAll('.section').forEach(section => section.style.display = "none");
-
+    
             // Muestra solo la sección seleccionada
             document.getElementById(sectionId).style.display = "block";
-
+    
             // Actualiza el estado activo en el menú
             document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
             event.target.closest("li").classList.add("active");
+    
+            // Si está en móvil/tablet, oculta el menú al seleccionar una opción
+            if (window.innerWidth <= 1024) {
+                document.getElementById("sidebar").classList.remove("open");
+            }
         }
+    
+        function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.querySelector(".main");
+    const Clarity = document.querySelector(".header1");
+
+    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
+
+    sidebar.classList.toggle("open");
+    mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+    Clarity.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+}
+
+// Función para manejar el clic en los elementos del menú
+document.querySelectorAll(".menu li").forEach(item => {
+    item.addEventListener("click", function() {
+        document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
+        document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
+        document.querySelector(".header1").classList.remove("hidden"); // Muestra el contenido
+    });
+});
+
     </script>
+    
 
 </body>
 </html>
