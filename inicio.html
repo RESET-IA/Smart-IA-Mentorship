@@ -28,27 +28,30 @@
         }
 
         body {
-            width: 100vh;
-            height: 110vh;
+            width: 100vw;
+            height: auto;
+            min-height: 100vh;
             background-image: url('IMAGENES/sphere-with-orange-yellow-lines-dots-that-are-connected-center.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            overflow-y: auto; /* Permite desplazamiento */
             display: flex;
+            flex-direction: column;
         }
 
         /* Menú lateral */
         .sidebar {
             width: 280px;
+            height: 100vh; /* Fija el tamaño a la pantalla */
             background: #8b00002f;
             color: rgb(216, 194, 194);
             padding: 20px;
             display: flex;
+            position: absolute; /* Cambiado de fixed a absolute */
             flex-direction: column;
-            position: fixed;
             top: 0;
             left: 0;
-            height: 100%;
             transition: left 0.3s ease-in-out;
             z-index: 1000;
         }
@@ -168,9 +171,10 @@
 
         @media (max-width: 1024px) { 
             .sidebar {
-                position: fixed;
+                position: absolute; /* Para que todo se mueva junto */
                 left: -280px;
                 transition: left 0.3s ease-in-out;
+                height: 120vh;
             }
 
             .sidebar.open {
@@ -203,10 +207,12 @@
 
             body {
                 width: 100vw; /* Evita desbordamientos horizontales */
-                width: 100vw; /* Evita desbordamientos horizontales */
+                height: 120vh;
                 overflow-x: hidden;
                 display: flex;
                 justify-content: center;
+                overflow-y: auto; /* Permite desplazamiento */
+                position: relative; /* Para que todo se mueva junto */
             }
             
         }
@@ -215,14 +221,49 @@
             @media (min-width: 1025px) {
                 .sidebar {
                     width: 280px;
+                    height: 120vh; /* Fija el tamaño a la pantalla */
                     background: #8b00002f;
                     color: rgb(216, 194, 194);
                     padding: 20px;
                     display: flex;
                     flex-direction: column;
+                    position: absolute; /* Cambiado de fixed a absolute */
                     top: 0;
-                    left: 0              
+                    left: 0;
+                    transition: left 0.3s ease-in-out;
+                    z-index: 1000;
+
+            }
+                .main {
+                    justify-content: center; /* Centra el contenido */
+                    align-items: center;
+                    padding: 10px;
+                    width: 100%;
+                    display: flex;
+                    height: auto; /* Deja que crezca con el contenido */
+                    margin-left: 260px;
                 }
+
+                .section {
+                    display: none;
+                    width: 80%;  /* Usa un ancho flexible */
+                    max-width: 600px; /* Limita el ancho máximo */
+                    text-align: center;
+                    padding: 20px;
+                    background: rgba(0, 0, 0, 0.7);
+                    border-radius: 10px;
+                    color: white;
+                }
+
+                body {
+                width: 100vw; /* Evita desbordamientos horizontales */
+                min-height: 120vh;
+                overflow-x: hidden;
+                overflow-y: auto; /* Permite desplazamiento */
+                display: flex;
+                justify-content: center;
+                position: relative; /* Para que todo se mueva junto */
+            }
 
                 .menu-toggle {
                     display: none;
