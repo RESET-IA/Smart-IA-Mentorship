@@ -5,358 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESET® - Educación</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        .header {
-            width: 100%;
-            height: 100px;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        body {
-            width: 100vw;
-            height: 120vh;
-            background-image: url('IMAGENES/sphere-with-orange-yellow-lines-dots-that-are-connected-center.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow-y: auto; /* Permite desplazamiento */
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Menú lateral */
-        .sidebar {
-            width: 280px;
-            height: 100vh; /* Fija el tamaño a la pantalla */
-            background: #8b00002f;
-            color: rgb(216, 194, 194);
-            padding: 20px;
-            display: flex;
-            position: absolute; /* Cambiado de fixed a absolute */
-            flex-direction: column;
-            top: 0;
-            left: 0;
-            transition: left 0.3s ease-in-out;
-            z-index: 1000;
-        }
-
-        .sidebar.open {
-            left: -280px;
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 180px;
-        }
-
-        .separator {
-            border-bottom: 5px solid white;
-            margin: 10px 0;
-            width: 100%;
-        }
-
-        .menu-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #ff3c00;
-            border: none;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .menu li {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-bottom: 3px solid #140101; /* Línea separadora */
-        }
-
-        .menu li i {
-            margin-right: 10px;
-        }
-
-        .menu li:hover, 
-        .menu li.active {
-            background: #ff3c00;
-            color: white;
-        }
-
-        .main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            margin-top: 100px; /* Debe ser igual a la altura del header */
-        }
-
-        .section {
-            display: none;
-            width: 60%;
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            color: white;
-        }
-
-        .cards {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            width: 220px;
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .card:hover {
-            background: rgba(255, 60, 0, 0.8);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .main.hidden {
-            display: none;
-        }
-
-        @media (max-width: 1024px) { 
-            .sidebar {
-                position: absolute; /* Para que todo se mueva junto */
-                left: -280px;
-                transition: left 0.3s ease-in-out;
-                height: 120vh;
-            }
-
-            .sidebar.open {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .main {
-                justify-content: center; /* Centra el contenido */
-                align-items: center;
-                padding: 10px;
-                width: 100%;
-                display: flex;
-                height: auto; /* Deja que crezca con el contenido */
-            }
-
-            .section {
-                display: none;
-                width: 80%;  /* Usa un ancho flexible */
-                max-width: 600px; /* Limita el ancho máximo */
-                text-align: center;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 10px;
-                color: white;
-            }
-
-            body {
-                width: 100vw; /* Evita desbordamientos horizontales */
-                height: 120vh;
-                overflow-x: hidden;
-                display: flex;
-                justify-content: center;
-                overflow-y: auto; /* Permite desplazamiento */
-            }
-        }
-
-            /* En pantallas grandes (PC), el menú estará visible y fijo */
-            @media (min-width: 1025px) {
-                .sidebar {
-                    width: 280px;
-                    height: 120vh; /* Fija el tamaño a la pantalla */
-                    background: #8b00002f;
-                    color: rgb(216, 194, 194);
-                    padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    position: absolute; /* Cambiado de fixed a absolute */
-                    top: 0;
-                    left: 0;
-                    transition: left 0.3s ease-in-out;
-                    z-index: 1000;
-
-            }
-                .main {
-                    justify-content: center; /* Centra el contenido */
-                    align-items: center;
-                    padding: 10px;
-                    width: 100%;
-                    display: flex;
-                    height: auto; /* Deja que crezca con el contenido */
-                    margin-left: 100px;
-                }
-
-                .section {
-                    display: none;
-                    width: 80%;  /* Usa un ancho flexible */
-                    max-width: 600px; /* Limita el ancho máximo */
-                    text-align: center;
-                    padding: 20px;
-                    background: rgba(0, 0, 0, 0.7);
-                    border-radius: 10px;
-                    color: white;
-                }
-
-                body {
-                width: 100vw; /* Evita desbordamientos horizontales */
-                min-height: 120vh;
-                overflow-x: hidden;
-                overflow-y: auto; /* Permite desplazamiento */
-                display: flex;
-                justify-content: center;
-            }
-
-                .menu-toggle {
-                    display: none;
-                }
-
-            }
-
-            /* Ajuste del header */
-.header1 {
-    width: 100%;
-    height: 100px; /* Ajusta según necesidad */
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribuye los elementos */
-    padding: 10px 20px;
-    position: fixed; /* Fija el header arriba */
-    top: 0;
-    left: 0;
-}
-
-.header1.hidden{
-    display: none;
-}
-
-
-    .video-container video {
-        width: 100%; /* El video ocupa el 100% del contenedor */
-        height: auto; /* Mantiene la proporción */
-    }
-
-
-    </style>
+    <link rel="icon" href="IMAGENES/ICON_CerebroCorpus.png" type="image/x-icon">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div class="header1">  
-        <!-- Botón de ayuda, colocado en el header -->
-        <button class="widget-button" onclick="abrirVentana()">
-            <img src="IMAGENES/BotonAyudaClarity.png" alt="Ayuda" class="widget-icon" width="auto">
-        </button>
-    </div>
-    
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <!-- Menú lateral -->
-    <div class="sidebar" id="sidebar">
-        
-        <div class="header">
-        <a href="inicio.html"><img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Logo" class="logo"></a><!-- Logo a la izquierda -->
-        <div class="title"></div> <!-- Título centrado -->
-    </div>
-        
-        <style>
-            .widget-button {
-                position: absolute;
-                right: 10px;
-                top: 10px;
-                padding: 5px;
-                background: none;
-                border: none;
-                cursor: pointer;
-                transition: transform 0.2s ease;
-            }
-        
-            .widget-button:hover {
-                transform: scale(1.1);
-            }
-        
-            .widget-icon {
-                width: 120x; /* Ajusta el tamaño del icono */
-                height: 120px;
-            }
-        </style>
-        
-        <script>
-            function abrirVentana() {
-                var width = 500;
-                var height = 500;
-        
-                var screenWidth = window.screen.width;
-                var screenHeight = window.screen.height;
-        
-                var left = (screenWidth - width) / 2;
-                var top = (screenHeight - height) / 2;
-        
-                window.open('https://elevenlabs.io/app/talk-to?agent_id=j1yTuL2uduJSiIIcEmcN', 
-                            'Widget', 
-                            'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',resizable=yes');
-            }
-        </script>
 
-        <div class="logo-container">
-            <img src="IMAGENES/kepl.png" alt="Logo" class="logo">
+    <!-- Header -->
+    <header class="top-header">
+        
+        <div></div> <!-- Espacio vacío para centrar -->
+        <div class="right-header">
+            <img src="IMAGENES/LogoJK.png" alt="Johannes Kepler">
         </div>
-       
-        <p style="text-align: center; font-weight: bold;">Artesanos</p>
-        <div class="separator"></div>
+    </header>
 
-        <div class="menu">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <!-- Menú Lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="IMAGENES/Logo-AIMentorCraft.png" alt="MentorCraft" class="mentorcraft-logo">
+            <img src="IMAGENES/LogoResetTheHuman-INGRESO.png" alt="Reset" class="reset-logo">
+        </div>
+
+        <nav class="menu">
             <ul>
                 <li onclick="showSection('matematicas')"><i class="fas fa-square-root-alt"></i> Matemáticas</li>
                 <li onclick="showSection('ciencias')"><i class="fas fa-flask"></i> Ciencias</li>
@@ -368,108 +39,604 @@
                 <li onclick="showSection('secretaria')"><i class="fas fa-user-tie"></i> Secretaría</li>
                 <li onclick="showSection('orientacion')"><i class="fas fa-users"></i> Orientación Estudiantil</li>
             </ul>
+        </nav>
+               
+        <!-- Corpus de Entrenamiento -->
+        <div class="corpus-container">
+            <img src="IMAGENES/BotonCorpus.png" alt="Corpus de Entrenamiento" class="corpus-title-img">
+            <p>Sofi Molina | 9no de Básica</p>
+            <p>Enfoque: Inteligencia Espacial / Creativa</p>
+        </div>
+            <div>
+                <center><img src="IMAGENES/ICON_CerebroCorpus.png" alt="Cerebro" width="220px" height="210px"></center>
+            </div>
+
+    </div>
+    <!-- Asistente -->
+    <script>
+        var vapiInstance = null;
+        const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
+        const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
+        const buttonIconURL = "IMAGENES/MentorCientificoEsteban.ico"; // Ruta correcta de la imagen
+        const buttonConfig = {
+                position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+                offset: "30px", // decide how far the button should be from the edge
+                width: "100px", // min-width of the button
+                height: "100px", // height of the button
+                idle: { // button state when the call is not active.
+                    color: `rgb(214, 84, 0)`, // Negro
+                    type: "round", // or "round"
+                    title: "Servicio al Cliente", // only required in case of Pill
+                    subtitle: "Habla con nuestro Asistente", // only required in case of pill
+                    icon: buttonIconURL,
+                },
+                loading: { // button state when the call is connecting
+                    color: `rgb(255, 102, 0)`, // Naranja
+                    type: "round", // or "round"
+                    title: "Conectando...", // only required in case of Pill
+                    subtitle: "Espera un momento", // only required in case of pill
+                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+                },
+                active: { // button state when the call is in progress or active.
+                    color: `rgb(255, 85, 0)`, // Naranja más oscuro
+                    type: "round", // or "round"
+                    title: "Llamada en progreso...", // only required in case of Pill
+                    icon: buttonIconURL,
+                },
+        };
+      
+        (function (d, t) {
+          var g = document.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+          g.src =
+            "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+          g.defer = true;
+          g.async = true;
+          s.parentNode.insertBefore(g, s);
+      
+          g.onload = function () {
+            vapiInstance = window.vapiSDK.run({
+              apiKey: apiKey, // mandatory
+              assistant: assistant, // mandatory
+              config: buttonConfig, // optional
+            });
+          };
+        })(document, "script");
+    
+        vapiInstance.on('speech-start', () => {
+            console.log('Speech has started');
+        });
+    
+        vapiInstance.on('speech-end', () => {
+            console.log('Speech has ended');
+        });
+    
+        vapiInstance.on('call-start', () => {
+            console.log('Call has started');
+        });
+    
+        vapiInstance.on('call-end', () => {
+            console.log('Call has stopped');
+        });
+    
+        vapiInstance.on('volume-level', (volume) => {
+            console.log(`Assistant volume level: ${volume}`);
+        });
+    
+        // Function calls and transcripts will be sent via messages
+        vapiInstance.on('message', (message) => {
+            console.log(message);
+        });
+    
+        vapiInstance.on('error', (e) => {
+            console.error(e)
+        });
+      </script>
+   
+
+<!-- Contenedor de la imagen de la misión -->
+<div class="mission-container">
+    <!-- Imagen de la misión -->
+    <img src="IMAGENES/Toda_EscenaPrimeraPantalla-AIMentorCraft.png" alt="Misión 1 - Numb3rland" class="mission-image">
+    
+    <!-- Botón de inicio con imagen -->
+    <div class="mission-button">
+        <img src="IMAGENES/BotonStart.png" alt="Iniciar Misión" onclick="openVideo()">
+    </div>
+</div>
+<!-- Modal con el video -->
+<div id="videoModal" class="modal" style="display: none;"> <!-- Asegurar que esté oculto al inicio -->
+    <div class="modal-content">
+        <span class="close" onclick="closeVideo()">&times;</span>
+        <video id="missionVideo" controls>
+            <source src="IMAGENES/IntroEscena1.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let modal = document.getElementById("videoModal");
+        let video = document.getElementById("missionVideo");
+
+        // Asegurar que el modal y el video estén ocultos y detenidos al cargar la página
+        modal.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+
+        // Evento para detectar cuando termina el video
+        video.addEventListener("ended", function() {
+            closeVideo(); // Cerrar el modal
+            showSection('matematicas'); // Redirigir a la sección de Matemáticas
+        });
+    });
+
+    function openVideo() {
+        let modal = document.getElementById("videoModal");
+        let video = document.getElementById("missionVideo");
+        modal.style.display = "flex";
+        video.play(); // Iniciar la reproducción solo al presionar el botón
+    }
+
+    function closeVideo() {
+        let modal = document.getElementById("videoModal");
+        let video = document.getElementById("missionVideo");
+        modal.style.display = "none";
+        video.pause(); // Detener el video al cerrar el modal
+        video.currentTime = 0; // Reiniciar el video al inicio
+    }
+</script>
+
+<!-- Contenedor principal -->
+<div class="main">
+    <div id="matematicas" class="section1">
+        <!-- Imagen de la misión -->
+        <img src="IMAGENES/BackJuegoMateGeogra-AIMentorCraft.png" alt="Juego" class="mission-image">
+        
+        <!-- Botón de inicio con imagen -->
+        <div class="mission-button">
+            <img src="IMAGENES/BotonOptions.png" alt="Iniciar Juego" onclick="abrirVentana()">
         </div>
     </div>
 
-    <!-- Contenedor principal -->
-    <div class="main">
-        <div id="matematicas" class="section">
-            <h2>📘 Matemáticas</h2>
-            <div class="cards">
-                <div class="card">Ejercicios de Cálculo</div>
-                <div class="card">Álgebra Interactiva</div>
-                <div class="card">Geometría Práctica</div>
-            </div>
-        </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-        <div id="ciencias" class="section">
-            <h2>🧪 Ciencias</h2>
-            <div class="cards">
-                <div class="card">Experimentos Virtuales</div>
-                <div class="card">Laboratorio 3D</div>
-                <div class="card">Biología en Acción</div>
-            </div>
-        </div>
+        .boton {
+            display: block;
+            background: linear-gradient(to bottom, #e6b800, #b8860b);
+            border: 3px solid #704214;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px;
+            margin: 10px auto;
+            width: 90%;
+            max-width: 500px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 8px rgba(255, 215, 0, 0.5);
+        }
 
-        <div id="estudios-sociales" class="section">
-            <h2>🌎 Estudios Sociales</h2>
-            <div class="cards">
-                <div class="card">Historia del Mundo</div>
-                <div class="card">Geopolítica</div>
-                <div class="card">Economía Básica</div>
-            </div>
-        </div>
+        .boton:hover {
+            background: linear-gradient(to bottom, #ffcc33, #b8860b);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(255, 215, 0, 0.9);
+        }
 
-        <div id="ingles" class="section">
-            <h2>🚀 Ingles </h2>
-            <div class="cards">
-                <div class="video-container">
-                <video controls>
-                    <source src="IMAGENES/RenataMarketingCatalyst2 (1).mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
+        /* Estilo para la ventana emergente */
+        .modal1 {
+            display: none; /* Ocultar por defecto */
+            position: fixed;
+            z-index: 1; /* Establecer la ventana emergente en el frente */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+            overflow: auto;
+            padding-top: 50px;
+            text-align: center;
+        }
 
-        <div id="docentes" class="section">
-            <h2>👩‍🏫 Docentes</h2>
-            <div class="cards">
-                <div class="card">Capacitación Online</div>
-                <div class="card">Plataformas de Evaluación</div>
-                <div class="card">Recursos Didácticos</div>
-            </div>
-        </div>
+        /* Contenido de la ventana emergente */
+        .modal-content1 {
+            background-color: rgba(15, 10, 5, 0.95);
+            margin: -10px auto; /* Ajustar el margen superior para moverlo hacia arriba */
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 1000px;
+            box-shadow: 0 0 25px rgba(255, 165, 0, 0.8);
+        }
 
-        <div id="administrativos" class="section">
-            <h2>💼 Administrativos</h2>
-            <div class="cards">
-                <div class="card">Gestión Académica</div>
-                <div class="card">Procesos Administrativos</div>
-                <div class="card">Soporte y Reportes</div>
+        h1 {
+            font-size: 32px;
+            color: #f8d64e;
+            text-shadow: 3px 3px 10px rgba(255, 215, 0, 0.8);
+            text-align: center;
+        }
+
+        p {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .mentor-container {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(50, 30, 15, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7);
+            max-width: 250px;
+        }
+
+        .mentor {
+            width: 60px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .mentor-texto {
+            font-size: 14px;
+            font-weight: bold;
+            color: #f8d64e;
+        }
+
+        .final {
+            display: none;
+        }
+    </style>
+
+    <!-- La ventana emergente -->
+    <div id="miModal" class="modal1">
+        <div class="modal-content1">
+            <div class="marco" id="preguntas">
+                <h1>🏰 Misión: Reto del Mapa 🏰</h1>
+                <br>
+                <p id="pregunta"></p>
+                <button class="boton" onclick="verificarRespuesta(0)" id="opcion0"></button>
+                <button class="boton" onclick="verificarRespuesta(1)" id="opcion1"></button>
+                <button class="boton" onclick="verificarRespuesta(2)" id="opcion2"></button>
+                <p id="resultado"></p>
+                <button class="boton continuar" onclick="siguientePregunta()" style="display: none;">Continuar</button>
+            </div>
+        
+            <div class="marco" id="pruebaAgilidad" style="display: none;">
+                <h1>⚡ Prueba de Agilidad ⚡</h1>
+                <br>
+                <p>Cuando creas que han pasado 10 segundos, presiona el botón.</p>
+                <p id="cronometro">00:00:00</p>
+                <button class="boton" onclick="detenerCronometro()">¡Detener ahora!</button>
+            </div>
+        
+            <div class="marco final" id="final">
+                <h1>🏆 ¡Has completado la misión! 🏆</h1>
+                <br>
+                <p id="tiempoFinal"></p>
+                <button class="boton" onclick="reiniciarJuego()">🔄 Reiniciar</button>
+                <button class="boton" onclick="terminarSesion()">🚪 Terminar Sesión</button>
+            </div>
+            
+            <div class="mentor-container">
+                <img src="https://i.postimg.cc/nhgT4hX6/Mentor-Cientifico-Esteban.png" alt="Mentor Científico" class="mentor">
+                <p id="mensajeMentor" class="mentor-texto">"¡Prepárate para el reto!"</p>
             </div>
         </div>
     </div>
 
     <script>
-        function showSection(sectionId) {
-            // Oculta todas las secciones
-            document.querySelectorAll('.section').forEach(section => section.style.display = "none");
-    
-            // Muestra solo la sección seleccionada
-            document.getElementById(sectionId).style.display = "block";
-    
-            // Actualiza el estado activo en el menú
-            document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
-            event.target.closest("li").classList.add("active");
-    
-            // Si está en móvil/tablet, oculta el menú al seleccionar una opción
-            if (window.innerWidth <= 1024) {
-                document.getElementById("sidebar").classList.remove("open");
+        let preguntas = [
+            { texto: "Si la escala es 1 cm = 3 km y la distancia en el mapa es 6 cm, ¿cuántos km representa?", opciones: ["9 km", "18 km", "12 km"], respuesta: 0 },
+            { texto: "Si la escala es 5 cm = 10 km y la distancia en el mapa es 7.5 cm, ¿cuántos km reales?", opciones: ["12 km", "15 km", "18 km"], respuesta: 1 },
+            { texto: "Si la escala es 2 cm = 8 km y la distancia en el mapa es 10 cm, ¿cuál es la distancia real?", opciones: ["20 km", "40 km", "50 km"], respuesta: 1 }
+        ];
+
+        let preguntaActual = 0;
+        let tiempoInicio = 0;
+        let intervalID;
+
+        function cargarPregunta() {
+            let pregunta = preguntas[preguntaActual];
+            document.getElementById("pregunta").innerText = pregunta.texto;
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(`opcion${i}`).innerText = pregunta.opciones[i];
+            }
+            document.getElementById("resultado").style.display = "none";
+            document.querySelector(".continuar").style.display = "none";
+        }
+
+        function verificarRespuesta(indice) {
+            document.getElementById("resultado").style.display = "block";
+            if (indice === preguntas[preguntaActual].respuesta) {
+                document.getElementById("resultado").innerText = "✅ ¡Correcto!";
+                document.querySelector(".continuar").style.display = "block";
+            } else {
+                document.getElementById("resultado").innerText = "❌ Incorrecto.";
             }
         }
-    
-        function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    const mainContent = document.querySelector(".main");
-    const Clarity = document.querySelector(".header1");
 
-    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
+        function siguientePregunta() {
+            preguntaActual++;
+            if (preguntaActual < preguntas.length) {
+                cargarPregunta();
+            } else {
+                document.getElementById("preguntas").style.display = "none";
+                document.getElementById("pruebaAgilidad").style.display = "block";
+                tiempoInicio = performance.now();
+                actualizarCronometro();
+            }
+        }
 
-    sidebar.classList.toggle("open");
-    mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-    Clarity.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-}
+        // Función para iniciar el cronómetro
+        function actualizarCronometro() {
+            if (!intervalID) { // Solo iniciarlo si no está ya en ejecución
+                intervalID = setInterval(() => {
+                    let tiempoActual = performance.now();
+                    let tiempoTranscurrido = tiempoActual - tiempoInicio;
+                    let minutos = Math.floor(tiempoTranscurrido / 60000);
+                    let segundos = Math.floor((tiempoTranscurrido % 60000) / 1000);
+                    let milisegundos = Math.floor((tiempoTranscurrido % 1000));
 
-// Función para manejar el clic en los elementos del menú
-document.querySelectorAll(".menu li").forEach(item => {
-    item.addEventListener("click", function() {
-        document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
-        document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
-        document.querySelector(".header1").classList.remove("hidden"); // Muestra el contenido
-    });
-});
+                    document.getElementById("cronometro").innerText = 
+                        String(minutos).padStart(2, '0') + ":" +
+                        String(segundos).padStart(2, '0') + ":" +
+                        String(milisegundos).padStart(3, '0');
+                }, 50);
+            }
+        }
+
+        // Función para detener el cronómetro
+        function detenerCronometro() {
+            clearInterval(intervalID);
+            intervalID = null; // Resetear el intervalID
+            let tiempoFinal = document.getElementById("cronometro").innerText;
+            document.getElementById("pruebaAgilidad").style.display = "none";
+            document.getElementById("final").style.display = "block";
+            document.getElementById("tiempoFinal").innerText = `Tu tiempo final fue: ${tiempoFinal}`;
+        }
+
+        window.onload = cargarPregunta;
+
+        // Función para abrir la ventana emergente
+        function abrirVentana() {
+            document.getElementById("miModal").style.display = "block";
+            cargarPregunta(); // Cargar la primera pregunta al abrir la ventana emergente
+        }
+
+        // Cerrar la ventana emergente al hacer clic fuera de ella
+        window.onclick = function(event) {
+            if (event.target === document.getElementById("miModal")) {
+                document.getElementById("miModal").style.display = "none";
+            }
+        }
+
+        // Función para reiniciar el juego
+        function reiniciarJuego() {
+            preguntaActual = 0; // Reiniciar la pregunta
+            document.getElementById("final").style.display = "none"; // Ocultar la sección final
+            document.getElementById("miModal").style.display = "none"; // Cerrar el modal
+            abrirVentana(); // Volver a abrir la ventana emergente para empezar el juego de nuevo
+        }
+
+        // Función para terminar la sesión
+        function terminarSesion() {
+            document.getElementById("miModal").style.display = "none"; // Cerrar el modal
+            // Aquí puedes agregar cualquier otra acción para terminar la sesión, si es necesario
+        }
+
+        // Función para abrir la ventana emergente (con reinicio adecuado)
+        function abrirVentana() {
+            document.getElementById("miModal").style.display = "block"; // Abrir el modal
+            cargarPregunta(); // Cargar la primera pregunta al abrir la ventana emergente
+            document.getElementById("pruebaAgilidad").style.display = "none"; // Asegurarse de que la prueba de agilidad esté oculta al inicio
+            document.getElementById("preguntas").style.display = "block"; // Asegurarse de que las preguntas se muestren al reiniciar
+            document.getElementById("final").style.display = "none"; // Asegurarse de que la pantalla final esté oculta
+            resetearCronometro(); // Resetear el cronómetro
+        }
+
+        // Función para cargar la pregunta
+        function cargarPregunta() {
+            let pregunta = preguntas[preguntaActual];
+            document.getElementById("pregunta").innerText = pregunta.texto;
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(`opcion${i}`).innerText = pregunta.opciones[i];
+            }
+            document.getElementById("resultado").style.display = "none";
+            document.querySelector(".continuar").style.display = "none";
+        }
+
+        // Función para restablecer el cronómetro
+        function resetearCronometro() {
+            clearInterval(intervalID); // Detener cualquier cronómetro en ejecución
+            intervalID = null; // Resetear el intervalo
+            document.getElementById("cronometro").innerText = "00:00:00"; // Resetear el cronómetro a cero
+        }
 
     </script>
+
+    <div id="ciencias" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>🧪 Ciencias</h2>
+        <div class="cards">
+            <div class="card">Experimentos Virtuales</div>
+            <div class="card">Laboratorio 3D</div>
+            <div class="card">Biología en Acción</div>
+        </div>
+    </div>
+
+    <div id="lengua-literatura" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>📖 Lengua y Literatura</h2>
+        <div class="cards">
+            <div class="card">Club de Lectura</div>
+            <div class="card">Taller de Escritura</div>
+            <div class="card">Análisis Literario</div>
+        </div>
+    </div>
+
+    <div id="estudios-sociales" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>🌍 Estudios Sociales</h2>
+        <div class="cards">
+            <div class="card">Historia y Cultura</div>
+            <div class="card">Geografía Interactiva</div>
+            <div class="card">Sociedad y Ciudadanía</div>
+        </div>
+    </div>
     
+    <div id="ingles" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>🇬🇧 Inglés</h2>
+        <div class="cards">
+            <div class="card">Conversación y Pronunciación</div>
+            <div class="card">Gramática Dinámica</div>
+            <div class="card">Comprensión y Escritura</div>
+        </div>
+    </div>
+
+    <div id="docentes" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>👩‍🏫 Docentes</h2>
+        <div class="cards">
+            <div class="card">Capacitación Continua</div>
+            <div class="card">Estrategias Pedagógicas</div>
+            <div class="card">Innovación Educativa</div>
+        </div>
+    </div>
+    
+    <div id="administrativos" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>🏢 Administrativos</h2>
+        <div class="cards">
+            <div class="card">Gestión y Organización</div>
+            <div class="card">Recursos y Logística</div>
+            <div class="card">Optimización de Procesos</div>
+        </div>
+    </div>
+    
+    <div id="secretaria" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2>📂 Secretaría</h2>
+        <div class="cards">
+            <div class="card">Atención al Público</div>
+            <div class="card">Gestión Documental</div>
+            <div class="card">Soporte Administrativo</div>
+        </div>
+    </div>  
+    
+    <div id="orientacion" class="section">
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Orientación - AI Agents ByReset">
+        <h2>🧭 Orientación</h2>
+        <div class="cards">
+            <div class="card" onclick="openChatSupport()" style="cursor:pointer;"></div>
+                <i class="fas fa-chalkboard-teacher"></i> Docentes
+            </div>
+            <div class="card">
+                <i class="fas fa-user-graduate"></i> Estudiantes
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i> Padres de Familia
+            </div>
+        </div>
+    </div>
+    
+<script>
+    function openFAQWindow() {
+    alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
+}
+
+function openChatSupport() {
+    var width = 500;
+    var height = 600;
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+    var left = (screenWidth - width) / 2;
+    var top = (screenHeight - height) / 2;
+
+    window.open(
+        'https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g', 
+        'ChatSupportWindow', 
+        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+    );
+}
+</script>    
+
+</div>
+
+<script>
+    function showSection(sectionId) {
+        // Oculta todas las secciones
+        document.querySelectorAll('.section').forEach(section => section.style.display = "none");
+        document.querySelectorAll('.section1').forEach(section => section.style.display = "none");
+        document.querySelectorAll('.mission-container').forEach(section => section.style.display = "none");
+
+        // Muestra solo la sección seleccionada
+        document.getElementById(sectionId).style.display = "block";
+
+        // Actualiza el estado activo en el menú
+        document.querySelectorAll(".menu li").forEach(item => item.classList.remove("active"));
+        event.target.closest("li").classList.add("active");
+
+        // Si está en móvil/tablet, oculta el menú al seleccionar una opción
+        if (window.innerWidth <= 1024) {
+            document.getElementById("sidebar").classList.remove("open");
+        }
+    }
+
+    function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.querySelector(".main");
+        const mainContent1 = document.querySelector(".mission-container");
+
+        const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
+
+        sidebar.classList.toggle("open");
+        mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+        mainContent1.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+    }
+
+    // Función para manejar el clic en los elementos del menú
+    document.querySelectorAll(".menu li").forEach(item => {
+        item.addEventListener("click", function() {
+            document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
+            document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
+        });
+    });
+
+</script>
+
+<!-- Botón flotante con imagen desde URL -->
+<button id="chat-toggle" class="chat-button">
+    <img src="https://images.vexels.com/media/users/3/199333/isolated/preview/73e46ed920743c1c62a0eb24054d7ff8-lindo-cerebro-tomando-notas-de-dibujos-animados.png" alt="Chatbot Cerebro">
+</button>    
+
+<!-- Contenedor del chatbot -->
+<div id="chat-container" class="chat-container">
+    <iframe src="https://studio.d-id.com/agents/share?id=agt_8LlMaU4m&utm_source=copy&key=WVhWMGFEQjhOamRpWlRFeVpURXhOekEyTVRZMU0yVTVaV1EwWW1VMk9rMDNOREJHYkhGVFUxaEVhMUEyU0Rjd1VsUlZOQT09" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<script>
+    // Funcionalidad para mostrar/ocultar el chatbot
+    document.getElementById("chat-toggle").addEventListener("click", function () {
+        let chatContainer = document.getElementById("chat-container");
+        if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+            chatContainer.style.display = "block";
+        } else {
+            chatContainer.style.display = "none";
+        }
+    });
+</script>
+
 
 </body>
 </html>
