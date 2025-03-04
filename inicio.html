@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESET® - Educación</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="IMAGENES/ICON_CerebroCorpus.png" type="image/x-icon">
+    <link rel="icon" href="IMAGENES/ICONO.png" type="image/x-icon">
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
@@ -48,7 +48,7 @@
             <p>Enfoque: Inteligencia Espacial / Creativa</p>
         </div>
             <div>
-                <center><img src="IMAGENES/ICON_CerebroCorpus.png" alt="Cerebro" width="220px" height="210px"></center>
+                <center><img src="IMAGENES/ICON_CerebroCorpus.png" alt="Cerebro" width="120px" height="120px"></center>
             </div>
 
     </div>
@@ -155,38 +155,39 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let modal = document.getElementById("videoModal");
-        let video = document.getElementById("missionVideo");
+<script>document.addEventListener("DOMContentLoaded", function() {
+    let modal = document.getElementById("videoModal");
+    let video = document.getElementById("missionVideo");
 
-        // Asegurar que el modal y el video estén ocultos y detenidos al cargar la página
-        modal.style.display = "none";
-        video.pause();
-        video.currentTime = 0;
+    // Asegurar que el modal y el video estén ocultos y detenidos al cargar la página
+    modal.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
 
-        // Evento para detectar cuando termina el video
-        video.addEventListener("ended", function() {
-            closeVideo(); // Cerrar el modal
-            showSection('matematicas'); // Redirigir a la sección de Matemáticas
-        });
+    // Evento para detectar cuando termina el video
+    video.addEventListener("ended", function() {
+        closeVideo(); // Cerrar el modal
+        showSection('matematicas'); // Redirigir a la sección de Matemáticas
     });
+});
 
-    function openVideo() {
-        let modal = document.getElementById("videoModal");
-        let video = document.getElementById("missionVideo");
-        modal.style.display = "flex";
-        video.play(); // Iniciar la reproducción solo al presionar el botón
-    }
+function openVideo() {
+    let modal = document.getElementById("videoModal");
+    let video = document.getElementById("missionVideo");
+    modal.style.display = "flex";
+    video.play(); // Iniciar la reproducción solo al presionar el botón
+}
 
-    function closeVideo() {
-        let modal = document.getElementById("videoModal");
-        let video = document.getElementById("missionVideo");
-        modal.style.display = "none";
-        video.pause(); // Detener el video al cerrar el modal
-        video.currentTime = 0; // Reiniciar el video al inicio
-    }
+function closeVideo() {
+    let modal = document.getElementById("videoModal");
+    let video = document.getElementById("missionVideo");
+    modal.style.display = "none";
+    video.pause(); // Detener el video al cerrar el modal
+    video.currentTime = 0; // Reiniciar el video al inicio
+}
 </script>
+
+
 
 <!-- Contenedor principal -->
 <div class="main">
@@ -464,75 +465,75 @@
 
     </script>
 
-    <div id="ciencias" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>🧪 Ciencias</h2>
-        <div class="cards">
-            <div class="card">Experimentos Virtuales</div>
-            <div class="card">Laboratorio 3D</div>
-            <div class="card">Biología en Acción</div>
-        </div>
-    </div>
+     <div id="ciencias" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-flask"></i> Ciencias</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-dna"></i> Experimentos Virtuales</div>
+             <div class="card"><i class="fas fa-microscope"></i> Laboratorio 3D</div>
+             <div class="card"><i class="fas fa-seedling"></i> Biología en Acción</div>
+         </div>
+     </div>
 
-    <div id="lengua-literatura" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>📖 Lengua y Literatura</h2>
-        <div class="cards">
-            <div class="card">Club de Lectura</div>
-            <div class="card">Taller de Escritura</div>
-            <div class="card">Análisis Literario</div>
-        </div>
-    </div>
-
-    <div id="estudios-sociales" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>🌍 Estudios Sociales</h2>
-        <div class="cards">
-            <div class="card">Historia y Cultura</div>
-            <div class="card">Geografía Interactiva</div>
-            <div class="card">Sociedad y Ciudadanía</div>
-        </div>
-    </div>
+     <div id="lengua-literatura" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-book"></i> Lengua y Literatura</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-book-reader"></i> Club de Lectura</div>
+             <div class="card"><i class="fas fa-pen-fancy"></i> Taller de Escritura</div>
+             <div class="card"><i class="fas fa-scroll"></i> Análisis Literario</div>
+         </div>
+     </div>
+     
+     <div id="estudios-sociales" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-globe-americas"></i> Estudios Sociales</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-landmark"></i> Historia y Cultura</div>
+             <div class="card"><i class="fas fa-map-marked-alt"></i> Geografía Interactiva</div>
+             <div class="card"><i class="fas fa-users"></i> Sociedad y Ciudadanía</div>
+         </div>
+     </div>
+     
+     <div id="ingles" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-flag-uk"></i> Inglés</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-comment-dots"></i> Conversación y Pronunciación</div>
+             <div class="card"><i class="fas fa-book-open"></i> Gramática Dinámica</div>
+             <div class="card"><i class="fas fa-pencil-alt"></i> Comprensión y Escritura</div>
+         </div>
+     </div>
+     
+     <div id="docentes" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-chalkboard-teacher"></i> Docentes</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-book"></i> Capacitación Continua</div>
+             <div class="card"><i class="fas fa-lightbulb"></i> Estrategias Pedagógicas</div>
+             <div class="card"><i class="fas fa-flask"></i> Innovación Educativa</div>
+         </div>
+     </div>
+     
+     <div id="administrativos" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-building"></i> Administrativos</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-tasks"></i> Gestión y Organización</div>
+             <div class="card"><i class="fas fa-boxes"></i> Recursos y Logística</div>
+             <div class="card"><i class="fas fa-cogs"></i> Optimización de Procesos</div>
+         </div>
+     </div>
     
-    <div id="ingles" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>🇬🇧 Inglés</h2>
-        <div class="cards">
-            <div class="card">Conversación y Pronunciación</div>
-            <div class="card">Gramática Dinámica</div>
-            <div class="card">Comprensión y Escritura</div>
-        </div>
-    </div>
-
-    <div id="docentes" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>👩‍🏫 Docentes</h2>
-        <div class="cards">
-            <div class="card">Capacitación Continua</div>
-            <div class="card">Estrategias Pedagógicas</div>
-            <div class="card">Innovación Educativa</div>
-        </div>
-    </div>
-    
-    <div id="administrativos" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>🏢 Administrativos</h2>
-        <div class="cards">
-            <div class="card">Gestión y Organización</div>
-            <div class="card">Recursos y Logística</div>
-            <div class="card">Optimización de Procesos</div>
-        </div>
-    </div>
-    
-    <div id="secretaria" class="section">
-        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-        <h2>📂 Secretaría</h2>
-        <div class="cards">
-            <div class="card">Atención al Público</div>
-            <div class="card">Gestión Documental</div>
-            <div class="card">Soporte Administrativo</div>
-        </div>
-    </div>  
+     <div id="secretaria" class="section">
+         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+         <h2><i class="fas fa-folder-open"></i> Secretaría</h2>
+         <div class="cards">
+             <div class="card"><i class="fas fa-concierge-bell"></i> Atención al Público</div>
+             <div class="card"><i class="fas fa-file-alt"></i> Gestión Documental</div>
+             <div class="card"><i class="fas fa-laptop"></i> Soporte Administrativo</div>
+         </div>
+     </div>
     
     <div id="orientacion" class="section">
         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Orientación - AI Agents ByReset">
@@ -630,7 +631,5 @@ function openChatSupport() {
         }
     });
 </script>
-
-
 </body>
 </html>
