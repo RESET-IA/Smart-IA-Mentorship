@@ -1,0 +1,562 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+ /* Configuración global para permitir desplazamiento de toda la pantalla */
+ html, body {
+    width: 100%;
+    height: 100%;
+    background-image: url('IMAGENES/BACK-JUEGO.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
+    scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
+}
+
+/* Personalizar la barra de desplazamiento en navegadores Webkit */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background:transparent;
+    border-radius: 5px;
+}
+
+/* --- Header Superior --- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 10px 20px;
+    color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-header .right-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-header img {
+    height: 50px;
+}
+
+/* --- Menú Lateral --- */
+.sidebar {
+    width: 280px;
+    height: 100vh; 
+    background: transparent;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Permite desplazamiento interno en el menú */
+    padding-top: 5px;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sidebar.open {
+    left: -280px;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #ff3c00;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 3px solid #140101;
+}
+
+.menu li i {
+    margin-right: 10px;
+}
+
+.menu li:hover, 
+.menu li.active {
+    background: #d32f2f;
+    color: white;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+}
+
+.section {
+    display: none;
+    width: 80%; /* Ajusta el tamaño del contenedor */
+    max-width: 600px; /* Evita que sea demasiado grande en pantallas grandes */
+    text-align: center;
+    padding: 120px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    position: absolute;
+    color: white;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 75px;
+}
+
+/* Ajuste de la imagen dentro de la sección */
+.section img {
+    width: 40%; /* Reduce el tamaño de la imagen */
+    max-width: 250px; /* Límite máximo de ancho */
+    display: block;
+    margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio debajo */
+  }
+
+.section1 {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: transparent;
+    color: white;
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 75px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin-top: 25px;
+    flex-wrap: nowrap; /* Evita que se vayan a otra línea */
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    width: 220px;
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card:hover {
+    background: rgba(255, 60, 0, 0.8);
+    color: white;
+    transform: scale(1.05);
+}
+
+.main.hidden {
+    display: none;
+}
+
+@media (max-width: 1024px) { 
+    .sidebar {
+        position: absolute; /* Para que todo se mueva junto */
+        left: -280px;
+        transition: left 0.3s ease-in-out;
+        height: 120vh;
+        padding-top: 50px;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main {
+        justify-content: center; /* Centra el contenido */
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        height: auto; /* Deja que crezca con el contenido */
+        margin-top: 40px;
+        margin-left: -30px;
+    }
+
+    .section {
+        display: none;
+        width: 80%;  /* Usa un ancho flexible */
+        max-width: 600px; /* Limita el ancho máximo */
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        color: white;
+    }
+
+    .section1 {
+        display: none;
+        width: 75%;
+        text-align: center;
+        padding: 20px;
+        background: transparent;
+        color: white;
+        justify-content: center;
+        margin-top: 40px;
+        margin-left: -80px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    /* Contenedor del botón de inicio */
+    .mission-button {
+        display: flex;
+        justify-content: center; /* Centra el botón debajo de la imagen */
+        width: 100%;
+        margin-top: 15px; /* Espaciado entre la imagen y el botón */
+        margin-left: 80px;
+        }
+
+    body {
+        width: 100%;
+        height: 100%;
+        background-image: url('IMAGENES/BACK-JUEGO.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
+        scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
+    }
+    
+}
+
+    /* En pantallas grandes (PC), el menú estará visible y fijo */
+    @media (min-width: 1025px) {
+        .sidebar {
+            width: 280px;
+            height: 100vh; 
+            background: transparent;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Permite desplazamiento interno en el menú */
+            padding-top: 5px;
+
+    }
+        .main {
+            justify-content: center; /* Centra el contenido */
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            height: auto; /* Deja que crezca con el contenido */
+            margin-left: 100px;
+        }
+
+        .section {
+            display: none;
+            width: 80%;  /* Usa un ancho flexible */
+            max-width: 600px; /* Limita el ancho máximo */
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            color: white;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-image: url('IMAGENES/BACK-JUEGO.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
+            scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
+    }
+
+        .menu-toggle {
+            display: none;
+        }
+
+    }
+
+    /* Ajustar el tamaño de los logos debajo de cada uno */
+    .mentorcraft-logo,
+    .reset-logo {
+    width: 150%;        /* Ocuparán todo el ancho disponible */
+    max-width: 200px;   /* Ajusta el tamaño máximo */
+    display: block; 
+    margin: 15px auto;  /* Centrar la imagen con margen superior e inferior */
+    }
+
+    /* Ajustar el tamaño del botón de "Corpus de Entrenamiento" */
+    .corpus-container img {
+    width: 100%;
+    max-width: 250px; /* Ajusta el tamaño máximo para hacerlo más grande */
+    display: block;
+    margin: 10px auto;
+    }
+
+
+    /* Imagen del título "Corpus de Entrenamiento" */
+    .corpus-title-img {
+        width: 150%;
+        max-width: 180px; /* Ajusta el tamaño según sea necesario */
+        margin-bottom: 8px;
+    }
+
+    .corpus-container p {
+        font-size: 12px;
+        color: white;
+        margin: 2px 0;
+    }
+
+    /* Contenedor del cerebro centrado */
+    .brain-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    /* Imagen del cerebro */
+    .brain-image {
+        width: 10%;
+        height: 10%;
+    }
+
+    /* Contenedor de la misión - Centrado correctamente */
+    .mission-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra tanto la imagen como el botón */
+        width: 100%;
+        margin-top: 100px;
+        margin-left: 135px;
+    }
+
+    /* Imagen de la misión */
+    .mission-image {
+    width: 150%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Imagen de la misión */
+    .mission-image1 {
+        width: 150%;
+        min-width: 600px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Contenedor del botón de inicio */
+    .mission-button {
+    display: flex;
+    justify-content: center; /* Centra el botón debajo de la imagen */
+    width: 100%;
+    margin-top: 15px; /* Espaciado entre la imagen y el botón */
+    }
+
+    /* Imagen del botón de inicio */
+    .mission-button img {
+    width: 180px; /* Ajusta el tamaño del botón */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    }
+
+    /* Efecto hover del botón */
+    .mission-button img:hover {
+    transform: scale(1.1);
+    }
+
+    /* --- Estilos del Modal (Video) --- */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        position: relative;
+        width: 80%;
+        max-width: 800px;
+    }
+
+    .modal video {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: -40px;
+        right: 10px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }     
+
+    /* Botón flotante con imagen */
+    .chat-button {
+        position: fixed;
+        bottom: 40px;
+        left: 275px;
+        width: 100px; /* Ajusta el tamaño del botón */
+        height: 100px;
+        background-color: rgb(214, 84, 0);
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0px 6px 15px rgb(214, 84, 0);
+        cursor: pointer;
+        overflow: hidden;
+        padding: 0;
+        transition: transform 0.9s ease, box-shadow 0.3s ease;
+        animation: float 2s ease-in-out infinite; /* Animación continua */
+    }
+
+    .chat-button img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Contenedor del chatbot (oculto por defecto) */
+    .chat-container {
+        position: fixed;
+        bottom: 100px;
+        left: 320px;
+        width: 400px;
+        height: 500px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        display: none; /* Oculto por defecto */
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Efecto al pasar el cursor */
+    .chat-button:hover {
+        transform: translateY(-10px); /* Se mueve hacia arriba */
+        box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
+    }
+
+    /* Animación de vaivén */
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    /* Estilos específicos para el iframe */
+    .chat-container iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: none;
+    }
+
+    /* Animación de aparición del chatbot */
+    .show-chat {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    
