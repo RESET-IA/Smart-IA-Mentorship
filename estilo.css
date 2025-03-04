@@ -347,7 +347,6 @@
         .menu-toggle {
             display: none;
         }
-
     }
 
     /* Ajustar el tamaño de los logos debajo de cada uno */
@@ -407,15 +406,15 @@
 
     /* Imagen de la misión */
     .mission-image {
-    width: 150%;
-    max-width: 600px;
+    width: 400%;
+    max-width: 800px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     /* Imagen de la misión */
     .mission-image1 {
-        width: 150%;
-        min-width: 600px;
+        width: 400%;
+        min-width: 800px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
