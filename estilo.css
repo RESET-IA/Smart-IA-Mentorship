@@ -124,10 +124,20 @@
     color: white;
 }
 
+ /* Aplicamos un color diferente desde "Docentes" en adelante */
+ .menu li:nth-child(n+6) {
+    background-color: #a526265b; /* Color diferente */
+}
+
+.menu li:nth-child(n+6):hover {
+    background-color: #009de667; /* Color diferente al pasar el mouse */
+}
+
 .main {
     flex: 1;
     display: flex;
 }
+
 
 .section {
     display: none;
@@ -557,5 +567,3 @@
             transform: scale(1);
         }
     }
-
-    
