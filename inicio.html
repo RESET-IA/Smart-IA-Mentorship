@@ -34,21 +34,20 @@
                 <li onclick="showSection('lengua-literatura')"><i class="fas fa-book"></i> Lengua y Literatura</li>
                 <li onclick="showSection('estudios-sociales')"><i class="fas fa-globe"></i> Estudios Sociales</li>
                 <li onclick="showSection('ingles')"><i class="fas fa-language"></i> Inglés</li>
-                <li onclick="showSection('docentes')"><i class="fas fa-chalkboard-teacher"></i> Docentes</li>
-                <li onclick="showSection('administrativos')"><i class="fas fa-briefcase"></i> Administrativos</li>
-                <li onclick="showSection('secretaria')"><i class="fas fa-user-tie"></i> Secretaría</li>
-                <li onclick="showSection('orientacion')"><i class="fas fa-users"></i> Orientación Estudiantil</li>
+                <li class="diferente" onclick="showSection('docentes')"><i class="fas fa-chalkboard-teacher"></i> Docentes</li>
+                <li class="diferente" onclick="showSection('administrativos')"><i class="fas fa-briefcase"></i> Administrativos</li>
+                <li class="diferente" onclick="showSection('secretaria')"><i class="fas fa-user-tie"></i> Secretaría</li>
+                <li class="diferente" onclick="showSection('orientacion')"><i class="fas fa-users"></i> Orientación Estudiantil</li>
             </ul>
-        </nav>
+        </nav>        
                
         <!-- Corpus de Entrenamiento -->
         <div class="corpus-container">
             <img src="IMAGENES/BotonCorpus.png" alt="Corpus de Entrenamiento" class="corpus-title-img">
-            <p>Sofi Molina | 9no de Básica</p>
-            <p>Enfoque: Inteligencia Espacial / Creativa</p>
+            <right><img src="IMAGENES/FotoSofi.png" alt="Cerebro" width="90px" height="100px"></right>
         </div>
             <div>
-                <center><img src="IMAGENES/ICON_CerebroCorpus.png" alt="Cerebro" width="120px" height="120px"></center>
+                <right><img src="IMAGENES/animated_brain_latin.gif" alt="Cerebro" width="60px" height="60px"></right>
             </div>
 
     </div>
@@ -57,7 +56,7 @@
         var vapiInstance = null;
         const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
         const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-        const buttonIconURL = "IMAGENES/MentorCientificoEsteban.ico"; // Ruta correcta de la imagen
+        const buttonIconURL = "Imagenes\Cerebroconlentes.ico"; // Ruta correcta de la imagen
         const buttonConfig = {
                 position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
                 offset: "30px", // decide how far the button should be from the edge
@@ -535,37 +534,23 @@ function closeVideo() {
          </div>
      </div>
     
-    <div id="orientacion" class="section">
+     <div id="orientacion" class="section">
         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Orientación - AI Agents ByReset">
         <h2>🧭 Orientación</h2>
         <div class="cards">
-            <div class="card" onclick="openChatSupport()"><i class="fas fa-chalkboard-teacher"></i>Docentes</div>
-            <div class="card"><i class="fas fa-user-graduate"></i>Estudiantes</div>
-            <div class="card"><i class="fas fa-users"></i>Padres de Familia</div>
+            <div class="card" onclick="openPopup('https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g')">
+                <i class="fas fa-chalkboard-teacher"></i> AI|AGENTS RESET (Docentes)
+            </div>
+            <div class="card"><i class="fas fa-user-graduate"></i> Estudiantes</div>
+            <div class="card"><i class="fas fa-users"></i> Padres de Familia</div>
         </div>
     </div>
     
-<script>
-    function openFAQWindow() {
-    alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
-}
-
-function openChatSupport() {
-    var width = 500;
-    var height = 600;
-    var screenWidth = window.screen.width;
-    var screenHeight = window.screen.height;
-    var left = (screenWidth - width) / 2;
-    var top = (screenHeight - height) / 2;
-
-    window.open(
-        'https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g', 
-        'ChatSupportWindow', 
-        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-    );
-}
-</script>    
-
+    <script>
+        function openPopup(url) {
+            window.open(url, 'popupWindow', 'width=800,height=600,scrollbars=yes,resizable=yes');
+        }
+    </script>
 </div>
 
 <script>
@@ -612,7 +597,7 @@ function openChatSupport() {
 
 <!-- Botón flotante con imagen desde URL -->
 <button id="chat-toggle" class="chat-button">
-    <img src="https://images.vexels.com/media/users/3/199333/isolated/preview/73e46ed920743c1c62a0eb24054d7ff8-lindo-cerebro-tomando-notas-de-dibujos-animados.png" alt="Chatbot Cerebro">
+    <img src="Imagenes/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
 </button>    
 
 <!-- Contenedor del chatbot -->
