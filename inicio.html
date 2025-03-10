@@ -587,36 +587,44 @@ function openChatSupport() {
         }
     }
 
-    function toggleMenu() {
-        const sidebar = document.getElementById("sidebar");
-        const mainContent = document.querySelector(".main");
-        const missionContainer = document.querySelector(".mission-container");
-        const chatButton = document.querySelector(".chat-button");
+    let opcionSeleccionada = false; // Variable para rastrear si se ha seleccionado una opción
 
-        const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
+function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.querySelector(".main");
+    const missionContainer = document.querySelector(".mission-container");
+    const chatButton = document.querySelector(".chat-button");
 
-        sidebar.classList.toggle("open");
-        mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-        missionContainer.classList.toggle("hidden", isOpening);
-        chatButton.classList.toggle("hidden", isOpening);    
+    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
 
-        if (missionContainer) {
+    sidebar.classList.toggle("open");
+    mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+    chatButton.classList.toggle("hidden", isOpening);    
+
+    if (!opcionSeleccionada && missionContainer) {
         missionContainer.style.display = isOpening ? "none" : "flex";
-        }
-        
-        if (chatButton) {
-            chatButton.style.display = isOpening ? "none" : "block";
-        }
-    
     }
+    
+    if (chatButton) {
+        chatButton.style.display = isOpening ? "none" : "block";
+    }
+}
 
-    // Función para manejar el clic en los elementos del menú
-    document.querySelectorAll(".menu li").forEach(item => {
-        item.addEventListener("click", function() {
-            document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
-            document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
-        });
+// Agregar evento a las opciones del menú para registrar que se ha seleccionado una
+document.querySelectorAll(".menu li").forEach(item => {
+    item.addEventListener("click", function() {
+        opcionSeleccionada = true; // Se marcó una opción
+        document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
+        document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
+
+        // Oculta definitivamente el missionContainer al seleccionar una opción
+        const missionContainer = document.querySelector(".mission-container");
+        if (missionContainer) {
+            missionContainer.style.display = "none";
+        }
     });
+});
+
 
 </script>
 
