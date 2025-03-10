@@ -136,10 +136,10 @@
 <!-- Contenedor de la imagen de la misión -->
 <div class="mission-container">
     <!-- Imagen de la misión -->
-    <img src="IMAGENES/Toda_EscenaPrimeraPantalla-AIMentorCraft.png" alt="Misión 1 - Numb3rland" class="mission-image">
+    <img src="IMAGENES/Toda_EscenaPrimeraPantalla-AIMentorCraft.png" alt="Misión 1 - Numb3rland" class="image2">
     
     <!-- Botón de inicio con imagen -->
-    <div class="mission-button">
+    <div class="mission-button1">
         <img src="IMAGENES/BotonStart.png" alt="Iniciar Misión" onclick="openVideo()">
     </div>
 </div>
@@ -192,7 +192,7 @@ function closeVideo() {
 <div class="main">
     <div id="matematicas" class="section1">
         <!-- Imagen de la misión -->
-        <img src="IMAGENES/BackJuegoMateGeogra-AIMentorCraft.png" alt="Juego" class="mission-image">
+        <img src="IMAGENES/BackJuegoMateGeogra-AIMentorCraft.png" alt="Juego" class="image1">
         
         <!-- Botón de inicio con imagen -->
         <div class="mission-button">
@@ -576,14 +576,24 @@ function closeVideo() {
     function toggleMenu() {
         const sidebar = document.getElementById("sidebar");
         const mainContent = document.querySelector(".main");
-        const mainContent1 = document.querySelector(".mission-container");
+        const missionContainer = document.querySelector(".mission-container");
+        const chatButton = document.querySelector(".chat-button");
 
         const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
 
         sidebar.classList.toggle("open");
         mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-        mainContent1.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-    }
+        missionContainer.classList.toggle("hidden", isOpening);
+        chatButton.classList.toggle("hidden", isOpening);    
+
+        if (missionContainer) {
+        missionContainer.style.display = isOpening ? "none" : "flex";
+        }
+        
+        if (chatButton) {
+            chatButton.style.display = isOpening ? "none" : "block";
+        }
+    
 
     // Función para manejar el clic en los elementos del menú
     document.querySelectorAll(".menu li").forEach(item => {
