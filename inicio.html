@@ -56,7 +56,7 @@
         var vapiInstance = null;
         const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
         const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-        const buttonIconURL = "IMAGENES/Cerebroconlentes.ico"; // Ruta correcta de la imagen
+        const buttonIconURL = "Imagenes/Cerebroconlentes.ico"; // Ruta correcta de la imagen
         const buttonConfig = {
                 position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
                 offset: "30px", // decide how far the button should be from the edge
@@ -534,23 +534,37 @@ function closeVideo() {
          </div>
      </div>
     
-     <div id="orientacion" class="section">
+    <div id="orientacion" class="section">
         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Orientación - AI Agents ByReset">
         <h2>🧭 Orientación</h2>
         <div class="cards">
-            <div class="card" onclick="openPopup('https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g')">
-                <i class="fas fa-chalkboard-teacher"></i> AI|AGENTS RESET (Docentes)
-            </div>
-            <div class="card"><i class="fas fa-user-graduate"></i> Estudiantes</div>
-            <div class="card"><i class="fas fa-users"></i> Padres de Familia</div>
+            <div class="card" onclick="openChatSupport()"><i class="fas fa-chalkboard-teacher"></i>AI|AGENTS RESET (Docentes)</div>
+            <div class="card"><i class="fas fa-user-graduate"></i>Estudiantes</div>
+            <div class="card"><i class="fas fa-users"></i>Padres de Familia</div>
         </div>
     </div>
     
-    <script>
-        function openPopup(url) {
-            window.open(url, 'popupWindow', 'width=800,height=600,scrollbars=yes,resizable=yes');
-        }
-    </script>
+<script>
+    function openFAQWindow() {
+    alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
+}
+
+function openChatSupport() {
+    var width = 500;
+    var height = 600;
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+    var left = (screenWidth - width) / 2;
+    var top = (screenHeight - height) / 2;
+
+    window.open(
+        'https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g', 
+        'ChatSupportWindow', 
+        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
+    );
+}
+</script>    
+
 </div>
 
 <script>
@@ -594,6 +608,7 @@ function closeVideo() {
             chatButton.style.display = isOpening ? "none" : "block";
         }
     
+    }
 
     // Función para manejar el clic en los elementos del menú
     document.querySelectorAll(".menu li").forEach(item => {
@@ -607,7 +622,7 @@ function closeVideo() {
 
 <!-- Botón flotante con imagen desde URL -->
 <button id="chat-toggle" class="chat-button">
-    <img src="IMAGENES/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
+    <img src="Imagenes/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
 </button>    
 
 <!-- Contenedor del chatbot -->
@@ -626,5 +641,7 @@ function closeVideo() {
         }
     });
 </script>
+
+
 </body>
 </html>
