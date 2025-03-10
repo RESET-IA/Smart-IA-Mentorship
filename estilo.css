@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
+    
 }
 
  /* Configuración global para permitir desplazamiento de toda la pantalla */
@@ -136,6 +137,12 @@
 .main {
     flex: 1;
     display: flex;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -253,14 +260,14 @@
 
     .section1 {
         display: none;
-        width: 75%;
+        width: 80%;
         text-align: center;
         padding: 20px;
         background: transparent;
         color: white;
         justify-content: center;
         margin-top: 40px;
-        margin-left: -80px;
+        margin-left: -30px;
     }
 
     .cards {
@@ -273,15 +280,43 @@
         margin-top: 25px;
     }
 
+    .image1{
+        width: 200%;
+        max-width: 500px;
+        height: auto;
+        margin-right: 250px;
+    }
+
+    .image2{
+        margin-top: 100px;
+        width: 200%;
+        max-width: 400px;
+        height: auto;
+        margin-right: 270px;
+    }
+
     /* Contenedor del botón de inicio */
     .mission-button {
         display: flex;
         justify-content: center; /* Centra el botón debajo de la imagen */
         width: 100%;
         margin-top: 15px; /* Espaciado entre la imagen y el botón */
-        margin-left: 80px;
+        margin-left: 50px;
         }
 
+    .mission-button1 {
+        position: absolute;
+        margin-top: 360px; /* Espaciado entre la imagen y el botón */
+        margin-right: 280px;
+        width: 50%; /* Reduce el tamaño del botón en móvil */
+        max-width: 150px;
+    }
+    .mission-button1 img {
+        width: 180px; /* Ajusta el tamaño del botón */
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+    
     body {
         width: 100%;
         height: 100%;
@@ -294,10 +329,99 @@
         flex-direction: column;
         overflow-x: hidden;
         overflow-y: auto;
-        scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
-        scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
-    }
-    
+        scrollbar-width: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Botón flotante con imagen */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 100px; /* Ajusta el tamaño del botón */
+            height: 100px;
+            background-color: rgb(214, 84, 0);
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0px 6px 15px rgb(214, 84, 0);
+            cursor: pointer;
+            overflow: hidden;
+            padding: 0;
+            transition: transform 0.9s ease, box-shadow 0.3s ease;
+            animation: float 2s ease-in-out infinite; /* Animación continua */
+        }
+
+        .chat-button img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Contenedor del chatbot (oculto por defecto) */
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            left: 320px;
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none; /* Oculto por defecto */
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Efecto al pasar el cursor */
+        .chat-button:hover {
+            transform: translateY(-10px); /* Se mueve hacia arriba */
+            box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
+        }
+
+        /* Animación de vaivén */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Estilos específicos para el iframe */
+        .chat-container iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* Animación de aparición del chatbot */
+        .show-chat {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
 }
 
     /* En pantallas grandes (PC), el menú estará visible y fijo */
@@ -336,6 +460,7 @@
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             color: white;
+            
         }
 
         body {
@@ -350,13 +475,133 @@
             flex-direction: column;
             overflow-x: hidden;
             overflow-y: auto;
-            scrollbar-width: thin; /* Personaliza la barra de desplazamiento */
-            scrollbar-color: transparent ; /* Color de la barra de desplazamiento */
-    }
-
+            scrollbar-width: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
         .menu-toggle {
             display: none;
         }
+
+        /* Imagen de la misión */
+        .image2 {
+            width: 400%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        
+        /* Imagen de la misión */
+        .image1 {
+            width: 400%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contenedor del botón de inicio */
+        .mission-button1 {
+        display: flex;
+        justify-content: center; /* Centra el botón debajo de la imagen */
+        width: 100%;
+        margin-top: 15px; /* Espaciado entre la imagen y el botón */
+        }
+    
+        /* Imagen del botón de inicio */
+        .mission-button1 img {
+        width: 180px; /* Ajusta el tamaño del botón */
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        }
+
+        /* Botón flotante con imagen */
+        .chat-button {
+            position: fixed;
+            bottom: 40px;
+            left: 275px;
+            width: 100px; /* Ajusta el tamaño del botón */
+            height: 100px;
+            background-color: rgb(214, 84, 0);
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0px 6px 15px rgb(214, 84, 0);
+            cursor: pointer;
+            overflow: hidden;
+            padding: 0;
+            transition: transform 0.9s ease, box-shadow 0.3s ease;
+            animation: float 2s ease-in-out infinite; /* Animación continua */
+        }
+
+        .chat-button img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Contenedor del chatbot (oculto por defecto) */
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            left: 320px;
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none; /* Oculto por defecto */
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Efecto al pasar el cursor */
+        .chat-button:hover {
+            transform: translateY(-10px); /* Se mueve hacia arriba */
+            box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
+        }
+
+        /* Animación de vaivén */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Estilos específicos para el iframe */
+        .chat-container iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* Animación de aparición del chatbot */
+        .show-chat {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
     }
 
     /* Ajustar el tamaño de los logos debajo de cada uno */
@@ -410,23 +655,10 @@
         flex-direction: column;
         align-items: center; /* Centra tanto la imagen como el botón */
         width: 100%;
-        margin-top: 100px;
+        margin-top: 20px;
         margin-left: 135px;
     }
 
-    /* Imagen de la misión */
-    .mission-image {
-    width: 400%;
-    max-width: 800px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Imagen de la misión */
-    .mission-image1 {
-        width: 400%;
-        min-width: 800px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
 
     /* Contenedor del botón de inicio */
     .mission-button {
@@ -448,6 +680,10 @@
     transform: scale(1.1);
     }
 
+    /* Efecto hover del botón */
+    .mission-button1 img:hover {
+        transform: scale(1.1);
+        }
     /* --- Estilos del Modal (Video) --- */
     .modal {
         display: none;
@@ -483,87 +719,5 @@
         cursor: pointer;
     }     
 
-    /* Botón flotante con imagen */
-    .chat-button {
-        position: fixed;
-        bottom: 40px;
-        left: 275px;
-        width: 100px; /* Ajusta el tamaño del botón */
-        height: 100px;
-        background-color: rgb(214, 84, 0);
-        border: none;
-        border-radius: 50%;
-        box-shadow: 0px 6px 15px rgb(214, 84, 0);
-        cursor: pointer;
-        overflow: hidden;
-        padding: 0;
-        transition: transform 0.9s ease, box-shadow 0.3s ease;
-        animation: float 2s ease-in-out infinite; /* Animación continua */
-    }
-
-    .chat-button img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    /* Contenedor del chatbot (oculto por defecto) */
-    .chat-container {
-        position: fixed;
-        bottom: 100px;
-        left: 320px;
-        width: 400px;
-        height: 500px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        display: none; /* Oculto por defecto */
-        transition: all 0.3s ease-in-out;
-    }
     
-    /* Efecto al pasar el cursor */
-    .chat-button:hover {
-        transform: translateY(-10px); /* Se mueve hacia arriba */
-        box-shadow: 0px 6px 15px rgb(214, 84, 0); /* Sombra naranja */
-    }
-
-    /* Animación de vaivén */
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-
-    /* Estilos específicos para el iframe */
-    .chat-container iframe {
-        width: 100%;
-        height: 100%;
-        border-radius: 20px;
-        border: none;
-    }
-
-    /* Animación de aparición del chatbot */
-    .show-chat {
-        display: block;
-        animation: fadeIn 0.3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
+    
