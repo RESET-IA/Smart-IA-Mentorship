@@ -258,7 +258,11 @@ function closeVideo() {
         let preguntas = [
             { texto: "Si la escala es 1 cm = 3 km y la distancia en el mapa es 6 cm, ¿cuántos km representa?", opciones: ["9 km", "18 km", "12 km"], respuesta: 0 },
             { texto: "Si la escala es 5 cm = 10 km y la distancia en el mapa es 7.5 cm, ¿cuántos km reales?", opciones: ["12 km", "15 km", "18 km"], respuesta: 1 },
-            { texto: "Si la escala es 2 cm = 8 km y la distancia en el mapa es 10 cm, ¿cuál es la distancia real?", opciones: ["20 km", "40 km", "50 km"], respuesta: 1 }
+            {
+  texto: "Si la escala es 2 cm = 8 km y la distancia en el mapa es 10 cm, ¿cuál es la distancia real?",
+  opciones: ["40 km", "20 km", "50 km"],
+  respuesta: 0 // 0 es el índice de "40 km"
+}
         ];
 
         let preguntaActual = 0;
@@ -527,7 +531,7 @@ function closeVideo() {
 
 <!-- Botón flotante con imagen desde URL -->
 <button id="chat-toggle" class="chat-button">
-    <img src="IMAGENES/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
+    <img src="Imagenes/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
 </button>    
 
 <!-- Contenedor del chatbot -->
