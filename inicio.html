@@ -51,95 +51,15 @@
             </div>
 
     </div>
-    <!-- Asistente -->
-    <script>
-        var vapiInstance = null;
-        const assistant = "150b71c6-e01c-4fc2-9c1d-8601bc442cbc"; // Substitute with your assistant ID
-        const apiKey = "a0f5f18d-c6ca-408c-9f6d-c157986d36f5"; // Substitute with your Public key from Vapi Dashboard.
-        const buttonIconURL = "IMAGENES/Cerebroconlentes.ico"; // Ruta correcta de la imagen
-        const buttonConfig = {
-                position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
-                offset: "30px", // decide how far the button should be from the edge
-                width: "100px", // min-width of the button
-                height: "100px", // height of the button
-                idle: { // button state when the call is not active.
-                    color: `rgb(214, 84, 0)`, // Negro
-                    type: "round", // or "round"
-                    title: "Servicio al Cliente", // only required in case of Pill
-                    subtitle: "Habla con nuestro Asistente", // only required in case of pill
-                    icon: buttonIconURL,
-                },
-                loading: { // button state when the call is connecting
-                    color: `rgb(255, 102, 0)`, // Naranja
-                    type: "round", // or "round"
-                    title: "Conectando...", // only required in case of Pill
-                    subtitle: "Espera un momento", // only required in case of pill
-                    icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
-                },
-                active: { // button state when the call is in progress or active.
-                    color: `rgb(255, 85, 0)`, // Naranja más oscuro
-                    type: "round", // or "round"
-                    title: "Llamada en progreso...", // only required in case of Pill
-                    icon: buttonIconURL,
-                },
-        };
-      
-        (function (d, t) {
-          var g = document.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-          g.src =
-            "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-          g.defer = true;
-          g.async = true;
-          s.parentNode.insertBefore(g, s);
-      
-          g.onload = function () {
-            vapiInstance = window.vapiSDK.run({
-              apiKey: apiKey, // mandatory
-              assistant: assistant, // mandatory
-              config: buttonConfig, // optional
-            });
-          };
-        })(document, "script");
-    
-        vapiInstance.on('speech-start', () => {
-            console.log('Speech has started');
-        });
-    
-        vapiInstance.on('speech-end', () => {
-            console.log('Speech has ended');
-        });
-    
-        vapiInstance.on('call-start', () => {
-            console.log('Call has started');
-        });
-    
-        vapiInstance.on('call-end', () => {
-            console.log('Call has stopped');
-        });
-    
-        vapiInstance.on('volume-level', (volume) => {
-            console.log(`Assistant volume level: ${volume}`);
-        });
-    
-        // Function calls and transcripts will be sent via messages
-        vapiInstance.on('message', (message) => {
-            console.log(message);
-        });
-    
-        vapiInstance.on('error', (e) => {
-            console.error(e)
-        });
-      </script>
    
 
 <!-- Contenedor de la imagen de la misión -->
 <div class="mission-container">
     <!-- Imagen de la misión -->
-    <img src="IMAGENES/Toda_EscenaPrimeraPantalla-AIMentorCraft.png" alt="Misión 1 - Numb3rland" class="image2">
+    <img src="IMAGENES/Toda_EscenaPrimeraPantalla-AIMentorCraft.png" alt="Misión 1 - Numb3rland" class="mission-image">
     
     <!-- Botón de inicio con imagen -->
-    <div class="mission-button1">
+    <div class="mission-button">
         <img src="IMAGENES/BotonStart.png" alt="Iniciar Misión" onclick="openVideo()">
     </div>
 </div>
@@ -192,7 +112,7 @@ function closeVideo() {
 <div class="main">
     <div id="matematicas" class="section1">
         <!-- Imagen de la misión -->
-        <img src="IMAGENES/BackJuegoMateGeogra-AIMentorCraft.png" alt="Juego" class="image1">
+        <img src="IMAGENES/BackJuegoMateGeogra-AIMentorCraft.png" alt="Juego" class="mission-image">
         
         <!-- Botón de inicio con imagen -->
         <div class="mission-button">
@@ -505,14 +425,31 @@ function closeVideo() {
      </div>
      
      <div id="docentes" class="section">
-         <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
-         <h2><i class="fas fa-chalkboard-teacher"></i> Docentes</h2>
-         <div class="cards">
-             <div class="card"><i class="fas fa-book"></i> Capacitación Continua</div>
-             <div class="card"><i class="fas fa-lightbulb"></i> Estrategias Pedagógicas</div>
-             <div class="card"><i class="fas fa-flask"></i> Innovación Educativa</div>
-         </div>
-     </div>
+        <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
+        <h2><i class="fas fa-chalkboard-teacher"></i> Docentes</h2>
+        <div class="cards">
+            <!-- Tarjeta con enlace (sin subrayado y en blanco) -->
+            <a href="http://artesanos.ai/" target="_blank" class="card link-no-underline">
+                <i class="fas fa-book"></i> Capacitación Continua
+            </a>
+            <div class="card"><i class="fas fa-lightbulb"></i> Estrategias Pedagógicas</div>
+            <div class="card"><i class="fas fa-flask"></i> Innovación Educativa</div>
+        </div>
+    </div>
+    
+    <!-- CSS para quitar subrayado y color blanco -->
+    <style>
+        .link-no-underline {
+            text-decoration: none; /* Quitar subrayado */
+            color: white; /* Hacer el texto blanco */
+        }
+    
+        .link-no-underline:hover {
+            color: #fff; /* Mantener el color blanco al hacer hover */
+            background-color: rgba(255, 255, 255, 0.2); /* Efecto de hover (ligera transparencia) */
+        }
+    </style>
+    
      
      <div id="administrativos" class="section">
          <img src="IMAGENES/Artesanos-_-AI-Agents-ByReset.png" alt="Talento Humano - AI Agents ByReset">
@@ -543,27 +480,6 @@ function closeVideo() {
             <div class="card"><i class="fas fa-users"></i>Padres de Familia</div>
         </div>
     </div>
-    
-<script>
-    function openFAQWindow() {
-    alert("Aquí se abrirá una sección de Preguntas Frecuentes próximamente.");
-}
-
-function openChatSupport() {
-    var width = 500;
-    var height = 600;
-    var screenWidth = window.screen.width;
-    var screenHeight = window.screen.height;
-    var left = (screenWidth - width) / 2;
-    var top = (screenHeight - height) / 2;
-
-    window.open(
-        'https://elevenlabs.io/app/talk-to?agent_id=4fg3Iy6tPDHaMWxPwa8g', 
-        'ChatSupportWindow', 
-        `width=${width},height=${height},left=${left},top=${top},resizable=yes`
-    );
-}
-</script>    
 
 </div>
 
@@ -587,50 +503,31 @@ function openChatSupport() {
         }
     }
 
-    let opcionSeleccionada = false; // Variable para rastrear si se ha seleccionado una opción
+    function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.querySelector(".main");
+        const mainContent1 = document.querySelector(".mission-container");
 
-function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    const mainContent = document.querySelector(".main");
-    const missionContainer = document.querySelector(".mission-container");
-    const chatButton = document.querySelector(".chat-button");
+        const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
 
-    const isOpening = !sidebar.classList.contains("open"); // Detectamos si se está abriendo
-
-    sidebar.classList.toggle("open");
-    mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
-    chatButton.classList.toggle("hidden", isOpening);    
-
-    if (!opcionSeleccionada && missionContainer) {
-        missionContainer.style.display = isOpening ? "none" : "flex";
+        sidebar.classList.toggle("open");
+        mainContent.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
+        mainContent1.classList.toggle("hidden", isOpening); // Ocultar solo cuando se abre el menú
     }
-    
-    if (chatButton) {
-        chatButton.style.display = isOpening ? "none" : "block";
-    }
-}
 
-// Agregar evento a las opciones del menú para registrar que se ha seleccionado una
-document.querySelectorAll(".menu li").forEach(item => {
-    item.addEventListener("click", function() {
-        opcionSeleccionada = true; // Se marcó una opción
-        document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
-        document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
-
-        // Oculta definitivamente el missionContainer al seleccionar una opción
-        const missionContainer = document.querySelector(".mission-container");
-        if (missionContainer) {
-            missionContainer.style.display = "none";
-        }
+    // Función para manejar el clic en los elementos del menú
+    document.querySelectorAll(".menu li").forEach(item => {
+        item.addEventListener("click", function() {
+            document.getElementById("sidebar").classList.remove("open"); // Oculta el menú
+            document.querySelector(".main").classList.remove("hidden"); // Muestra el contenido
+        });
     });
-});
-
 
 </script>
 
 <!-- Botón flotante con imagen desde URL -->
 <button id="chat-toggle" class="chat-button">
-    <img src="IMAGENES/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
+    <img src="Imagenes/KaiAvatar_ChatVoz.png" alt="Chatbot Cerebro">
 </button>    
 
 <!-- Contenedor del chatbot -->
